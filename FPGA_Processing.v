@@ -389,7 +389,7 @@ wire	[15:0]	row;
 
 assign row = (vmem_addr  / 16'b0000000010110100);
 
-assign AMAmem_data  = ( ~AMAmem_csx ) ? vmem_q : 16'bZ;
+assign AMAmem_data  = ( ~AMAmem_csx ) ? ((row > 4) ? ((NMS_isCorner) ? ({vmem_q[15:11],vmem_q[10:6],1'b1,vmem_q[4:0]}) : ({vmem_q[15:11],vmem_q[10:6],1'b0,vmem_q[4:0]})) : ({vmem_q[15:11],vmem_q[10:6],1'b0,vmem_q[4:0]})) : 16'bZ;
 
 assign vmem_data    = ( mcs1 | mcs2 ) ? vdata : 16'bZ ;
 assign ovmem_data    = ( mcs1 | mcs2 ) ? ovdata : 16'bZ ;
