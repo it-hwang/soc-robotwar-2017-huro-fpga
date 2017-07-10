@@ -176,7 +176,14 @@ wire [ 4:0] R = (R_int[20]) ? 5'b0 : (R_int[19:18] == 2'b0) ? R_int[17:13] : 5'b
 wire [ 5:0] G = (G_int[20]) ? 6'b0 : (G_int[19:18] == 2'b0) ? G_int[17:12] : 6'b111111;
 wire [ 4:0] B = (B_int[20]) ? 5'b0 : (B_int[19:18] == 2'b0) ? B_int[17:13] : 5'b11111;	  
 
-wire [15:0] DecVData = {R,G,B};
+//y = (0.299 * R) + (0.587*G) + (0.114*B)
+wire [4:0]	GrayScale = (R>>2) + (G>>2) + (B>>3);
+//wire [4:0]	GrayScale = ((3*R) + (6*G) + B) / 10;
+wire [4:0]	Gray_R = GrayScale;
+wire [5:0]	Gray_G = {GrayScale,1'b0};
+wire [4:0]	Gray_B = GrayScale;
+wire [15:0]	DecVData = {Gray_R,Gray_G,Gray_B};
+//wire [15:0] DecVData = {R,G,B};
 /////////////////////////////////////////////////////////////////////////////
 
 

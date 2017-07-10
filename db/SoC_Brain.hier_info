@@ -162,16 +162,11 @@ resetx => Cr_Data2[4].ACLR
 resetx => Cr_Data2[5].ACLR
 resetx => Cr_Data2[6].ACLR
 resetx => Cr_Data2[7].ACLR
-resetx => B_int[13].ACLR
-resetx => B_int[14].ACLR
-resetx => B_int[15].ACLR
 resetx => B_int[16].ACLR
 resetx => B_int[17].ACLR
 resetx => B_int[18].ACLR
 resetx => B_int[19].ACLR
 resetx => B_int[20].ACLR
-resetx => G_int[12].ACLR
-resetx => G_int[13].ACLR
 resetx => G_int[14].ACLR
 resetx => G_int[15].ACLR
 resetx => G_int[16].ACLR
@@ -179,8 +174,6 @@ resetx => G_int[17].ACLR
 resetx => G_int[18].ACLR
 resetx => G_int[19].ACLR
 resetx => G_int[20].ACLR
-resetx => R_int[13].ACLR
-resetx => R_int[14].ACLR
 resetx => R_int[15].ACLR
 resetx => R_int[16].ACLR
 resetx => R_int[17].ACLR
@@ -364,10 +357,10 @@ AMAmem_wrx => Selector1.IN1
 AMAmem_rdx => ns[6].DATAB
 AMAmem_rdx => always23.IN1
 AMAmem_rdx => Selector0.IN1
-AMAmem_waitx << AMAmem_waitx.DB_MAX_OUTPUT_PORT_TYPE
-AMAmem_irq0 << AMAmem_irq0.DB_MAX_OUTPUT_PORT_TYPE
-AMAmem_irq1 << AMAmem_irq1.DB_MAX_OUTPUT_PORT_TYPE
-led_test << led_blink[5].DB_MAX_OUTPUT_PORT_TYPE
+AMAmem_waitx <= AMAmem_waitx.DB_MAX_OUTPUT_PORT_TYPE
+AMAmem_irq0 <= AMAmem_irq0.DB_MAX_OUTPUT_PORT_TYPE
+AMAmem_irq1 <= AMAmem_irq1.DB_MAX_OUTPUT_PORT_TYPE
+led_test <= led_blink[5].DB_MAX_OUTPUT_PORT_TYPE
 
 
 |FPGA_Processing|pll:pll_inst
