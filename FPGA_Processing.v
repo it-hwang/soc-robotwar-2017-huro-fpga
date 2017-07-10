@@ -183,7 +183,7 @@ wire [4:0]	Gray_R = GrayScale;
 wire [5:0]	Gray_G = {GrayScale,1'b0};
 wire [4:0]	Gray_B = GrayScale;
 wire [15:0]	DecVData = {Gray_R,Gray_G,Gray_B};
-//wire [15:0] DecVData = {R,G,B};
+//wire [15:0] OriginVData = {R,G,B};
 /////////////////////////////////////////////////////////////////////////////
 
 
@@ -379,7 +379,7 @@ wire	[15:0]	row;
 
 assign row = (vmem_addr  / 16'b0000000010110100);
 
-assign AMAmem_data  = ( ~AMAmem_csx ) ? ((row > 4) ? (FD_isCorner ? 16'b0000011111100000 : (NMS_isCorner ? 16'b1111100000000000 : vmem_q)) : vmem_q) : 16'bZ;
+assign AMAmem_data  = ( ~AMAmem_csx ) ? ((row > 4) ? ((NMS_isCorner) ? (CornerData) : (OriginData)) : OriginData) : 16'bZ;
 
 assign vmem_data    = ( mcs1 | mcs2 ) ? vdata : 16'bZ ;
 //assign vmem_data    = ( (~mcs0 & mcs1) | (~mcs0 & mcs2) ) ? vdata : 16'bZ ;
