@@ -375,11 +375,12 @@ assign vmem_rden     = mcs5; 		// SRAM Read  //~mcs5;
 
 wire FD_isCorner;
 wire NMS_isCorner;
+wire Mat_isMatching;
 wire	[15:0]	row;
 
 assign row = (vmem_addr  / 16'b0000000010110100);
 
-assign AMAmem_data  = ( ~AMAmem_csx ) ? ((row > 4) ? (FD_isCorner ? 16'b0000011111100000 : (NMS_isCorner ? 16'b1111100000000000 : vmem_q)) : vmem_q) : 16'bZ;
+assign AMAmem_data  = ( ~AMAmem_csx ) ? ((row > 4) ? (NMS_isCorner ? 16'b0000011111100000 : (Mat_isMatching ? 16'b1111100000000000 : vmem_q)) : vmem_q) : 16'bZ;
 
 assign vmem_data    = ( mcs1 | mcs2 ) ? vdata : 16'bZ ;
 //assign vmem_data    = ( (~mcs0 & mcs1) | (~mcs0 & mcs2) ) ? vdata : 16'bZ ;
@@ -623,6 +624,131 @@ NMS_Datapath Datapath_NMS(
 	.refScore(NMS_regOut00),		  
 	//output
 	.NMS_isCorner(NMS_isCorner));
+	
+wire	[15:0]	Mat_refAddr;
+wire	[4:0]		Mat_calAddr;
+wire	[4:0]		Mat_regAddr;
+wire	Mat_readEn;
+
+Mat_Controller Controller_Mat(
+	//input
+	.nRESET(nRESET),
+	.clk(Sys_clk),
+	.input_addr(vmem_addr),
+	//output
+	.refAddr(Mat_refAddr),
+	.readEn(Mat_readEn),
+	.regAddr(Mat_calAddr),
+	.regAddrToCal(Mat_regAddr));
+
+wire	[15:0]	Mat_memAddr;
+
+Mat_AddrCal AddrCal_Mat(
+	.refAddr(Mat_refAddr),
+	.regAddr(Mat_calAddr),
+	.srmAddr(Mat_memAddr));
+
+wire	[7:0]	Mat_regOut00;
+wire	[7:0]	Mat_regOut01;
+wire	[7:0]	Mat_regOut02;
+wire	[7:0]	Mat_regOut03;
+wire	[7:0]	Mat_regOut04;
+wire	[7:0]	Mat_regOut05;
+wire	[7:0]	Mat_regOut06;
+wire	[7:0]	Mat_regOut07;
+wire	[7:0]	Mat_regOut08;
+wire	[7:0]	Mat_regOut09;
+wire	[7:0]	Mat_regOut10;
+wire	[7:0]	Mat_regOut11;
+wire	[7:0]	Mat_regOut12;
+wire	[7:0]	Mat_regOut13;
+wire	[7:0]	Mat_regOut14;
+wire	[7:0]	Mat_regOut15;
+wire	[7:0]	Mat_regOut16;
+wire	[7:0]	Mat_regOut17;
+wire	[7:0]	Mat_regOut18;
+wire	[7:0]	Mat_regOut19;
+wire	[7:0]	Mat_regOut20;
+wire	[7:0]	Mat_regOut21;
+wire	[7:0]	Mat_regOut22;
+wire	[7:0]	Mat_regOut23;
+wire	[7:0]	Mat_regOut24;
+wire	[7:0]	Mat_regOut25;
+wire	[7:0]	Mat_regOut26;
+wire	[7:0]	Mat_threshold;
+wire	[15:0]	Mat_memVal;
+wire	[7:0]	Mat_regData = {Mat_memVal[10:5],3'b000};
+
+Mat_Register Register_Mat(
+	//input
+	.clk(Sys_clk),
+	.nRESET(nRESET),
+	.readEn(Mat_readEn),
+	.RegAddr(Mat_regAddr),
+	.ReadData(Mat_regData),
+	//output
+	.RefPixel(Mat_regOut00), 
+   .SelPixel1(Mat_regOut01),
+	.SelPixel2(Mat_regOut02),
+	.SelPixel3(Mat_regOut03),
+	.SelPixel4(Mat_regOut04),
+	.SelPixel5(Mat_regOut05),
+	.SelPixel6(Mat_regOut06), 
+	.SelPixel7(Mat_regOut07),
+	.SelPixel8(Mat_regOut08),
+	.SelPixel9(Mat_regOut09),
+	.SelPixel10(Mat_regOut10),
+	.SelPixel11(Mat_regOut11),
+	.SelPixel12(Mat_regOut12),
+	.SelPixel13(Mat_regOut13),
+	.SelPixel14(Mat_regOut14),
+	.SelPixel15(Mat_regOut15),
+	.SelPixel16(Mat_regOut16),
+	.SelPixel17(Mat_regOut17),
+	.SelPixel18(Mat_regOut18),  
+	.SelPixel19(Mat_regOut19),
+	.SelPixel20(Mat_regOut20),
+	.SelPixel21(Mat_regOut21),
+	.SelPixel22(Mat_regOut22),
+	.SelPixel23(Mat_regOut23),
+	.SelPixel24(Mat_regOut24), 
+	.SelPixel25(Mat_regOut25),
+	.SelPixel26(Mat_regOut26),  			  
+	.Threshold(Mat_threshold));
+
+Mat_DataPath DataPath_Mat(
+	//input
+	.RefPxl(Mat_regOut00),
+	.IsCorner(NMS_isCorner),
+	.SelPxl1(Mat_regOut01),
+	.SelPxl2(Mat_regOut02),
+	.SelPxl3(Mat_regOut03),
+	.SelPxl4(Mat_regOut04),
+	.SelPxl5(Mat_regOut05),
+	.SelPxl6(Mat_regOut06),
+	.SelPxl7(Mat_regOut07),
+	.SelPxl8(Mat_regOut08),
+	.SelPxl9(Mat_regOut09),
+	.SelPxl10(Mat_regOut10),
+	.SelPxl11(Mat_regOut11),
+	.SelPxl12(Mat_regOut12),
+	.SelPxl13(Mat_regOut13),
+	.SelPxl14(Mat_regOut14),
+	.SelPxl15(Mat_regOut15),
+	.SelPxl16(Mat_regOut16),
+	.SelPxl17(Mat_regOut17),
+	.SelPxl18(Mat_regOut18),
+	.SelPxl19(Mat_regOut19),
+	.SelPxl20(Mat_regOut20),
+	.SelPxl21(Mat_regOut21),
+	.SelPxl22(Mat_regOut22),
+	.SelPxl23(Mat_regOut23),
+	.SelPxl24(Mat_regOut24),
+	.SelPxl25(Mat_regOut25),
+	.SelPxl26(Mat_regOut26), 
+	.Threshold(Mat_threshold),
+	//output
+	.IsMatching(Mat_isMatching));
 //-----------------------------------------------------------------
 
 //-----------------------------------------------------------------
@@ -634,7 +760,16 @@ CustomRAM RAM_custom(
 	.wraddress ( vmem_addr ),
 	.wren ( vmem_wren ),
 	.q( FD_memVal ) );
-	
+
+//MatRam
+CustomRAM RAM_mat(
+	.clock( Sys_clk ),
+	.data( vmem_data ),
+	.rdaddress ( Mat_memAddr ),
+	.wraddress ( vmem_addr ),
+	.wren( vmem_wren ),
+	.q( Mat_memVal ));
+
 //Score RAM
 ScoreRAM RAM_score(
 	.clock( Sys_clk ),
