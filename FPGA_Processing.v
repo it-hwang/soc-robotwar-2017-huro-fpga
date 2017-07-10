@@ -374,11 +374,12 @@ assign vmem_rden     = mcs5; 		// SRAM Read  //~mcs5;
 //assign mem_bex[0]  = ~(mcs1 | mcs3 | mcs5) ;	// 16bit LSB Byte enable
 
 wire FD_isCorner;
+wire NMS_isCorner;
 wire	[15:0]	row;
 
 assign row = (vmem_addr  / 16'b0000000010110100);
 
-assign AMAmem_data  = ( ~AMAmem_csx ) ? ((row > 4) ? (FD_isCorner ? 16'b1111100000000000 : vmem_q) : vmem_q) : 16'bZ;
+assign AMAmem_data  = ( ~AMAmem_csx ) ? ((row > 4) ? (FD_isCorner ? 16'b0000011111100000 : (NMS_isCorner ? 16'b1111100000000000 : vmem_q)) : vmem_q) : 16'bZ;
 
 assign vmem_data    = ( mcs1 | mcs2 ) ? vdata : 16'bZ ;
 //assign vmem_data    = ( (~mcs0 & mcs1) | (~mcs0 & mcs2) ) ? vdata : 16'bZ ;
@@ -571,6 +572,57 @@ FS_Datapath Datapath_FS(
 	.scoreVal(FS_scoreVal),
 	.outrefPxl(FS_refPixelOut), 
 	.outrefAddr(FS_refAddrOut));
+
+NMS_AddrCal AddrCal_NMS(
+	//input
+	.refAddr(NMS_refAddr),
+	.regAddr(NMS_calAddr), 
+						 
+	//output
+	.srmAddr(NMS_memAddr));
+
+wire	[11:0]	NMS_regOut00;
+wire	[11:0]	NMS_regOut01;
+wire	[11:0]	NMS_regOut02;
+wire	[11:0]	NMS_regOut03;
+wire	[11:0]	NMS_regOut04;
+wire	[11:0]	NMS_regOut05;
+wire	[11:0]	NMS_regOut06;
+wire	[11:0]	NMS_regOut07;
+wire	[11:0]	NMS_regOut08;
+
+NMS_Register Register_NMS(
+	//input
+	.clk(Sys_clk),
+	.nRESET(nRESET),
+	.regAddr(NMS_regAddr),
+	.readEn(NMS_readEn),
+	.scoreData(NMS_memVal),
+	//output
+	.nighScore0(NMS_regOut01),
+	.nighScore1(NMS_regOut02),
+	.nighScore2(NMS_regOut03),
+	.nighScore3(NMS_regOut04),
+	.nighScore4(NMS_regOut05),
+	.nighScore5(NMS_regOut06),
+	.nighScore6(NMS_regOut07),
+	.nighScore7(NMS_regOut08),
+	.refScore(NMS_regOut00));
+
+NMS_Datapath Datapath_NMS(
+	//input
+	.refPxl(FS_refPixelOut),
+	.nighScore0(NMS_regOut01),
+	.nighScore1(NMS_regOut02),
+	.nighScore2(NMS_regOut03),
+	.nighScore3(NMS_regOut04),
+	.nighScore4(NMS_regOut05), 
+	.nighScore5(NMS_regOut06), 
+	.nighScore6(NMS_regOut07), 
+	.nighScore7(NMS_regOut08),
+	.refScore(NMS_regOut00),		  
+	//output
+	.NMS_isCorner(NMS_isCorner));
 //-----------------------------------------------------------------
 
 //-----------------------------------------------------------------

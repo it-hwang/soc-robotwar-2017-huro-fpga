@@ -1,5 +1,5 @@
 Analysis & Synthesis report for SoC_Brain
-Mon Jul 10 21:25:26 2017
+Mon Jul 10 21:37:32 2017
 Quartus II 64-Bit Version 13.1.0 Build 162 10/23/2013 SJ Web Edition
 
 
@@ -43,16 +43,18 @@ Quartus II 64-Bit Version 13.1.0 Build 162 10/23/2013 SJ Web Edition
  35. lpm_mult Parameter Settings by Entity Instance
  36. Port Connectivity Checks: "ScoreRAM:RAM_score"
  37. Port Connectivity Checks: "CustomRAM:RAM_custom"
- 38. Port Connectivity Checks: "FS_Datapath:Datapath_FS"
- 39. Port Connectivity Checks: "FD_Datapath:Datapath_FD"
- 40. Port Connectivity Checks: "FD_Register:Register_FD"
- 41. Port Connectivity Checks: "FD_AddrCal:AddrCal_FD"
- 42. Port Connectivity Checks: "FAST_Controller:Controller"
- 43. SignalTap II Logic Analyzer Settings
- 44. Elapsed Time Per Partition
- 45. Connections to In-System Debugging Instance "auto_signaltap_0"
- 46. Analysis & Synthesis Messages
- 47. Analysis & Synthesis Suppressed Messages
+ 38. Port Connectivity Checks: "NMS_Register:Register_NMS"
+ 39. Port Connectivity Checks: "NMS_AddrCal:AddrCal_NMS"
+ 40. Port Connectivity Checks: "FS_Datapath:Datapath_FS"
+ 41. Port Connectivity Checks: "FD_Datapath:Datapath_FD"
+ 42. Port Connectivity Checks: "FD_Register:Register_FD"
+ 43. Port Connectivity Checks: "FD_AddrCal:AddrCal_FD"
+ 44. Port Connectivity Checks: "FAST_Controller:Controller"
+ 45. SignalTap II Logic Analyzer Settings
+ 46. Elapsed Time Per Partition
+ 47. Connections to In-System Debugging Instance "auto_signaltap_0"
+ 48. Analysis & Synthesis Messages
+ 49. Analysis & Synthesis Suppressed Messages
 
 
 
@@ -78,18 +80,18 @@ applicable agreement for further details.
 +---------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                    ;
 +------------------------------------+--------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Mon Jul 10 21:25:26 2017      ;
+; Analysis & Synthesis Status        ; Successful - Mon Jul 10 21:37:32 2017      ;
 ; Quartus II 64-Bit Version          ; 13.1.0 Build 162 10/23/2013 SJ Web Edition ;
 ; Revision Name                      ; SoC_Brain                                  ;
 ; Top-level Entity Name              ; FPGA_Processing                            ;
 ; Family                             ; Cyclone IV E                               ;
-; Total logic elements               ; 2,015                                      ;
-;     Total combinational functions  ; 1,621                                      ;
-;     Dedicated logic registers      ; 808                                        ;
-; Total registers                    ; 808                                        ;
+; Total logic elements               ; 2,870                                      ;
+;     Total combinational functions  ; 2,378                                      ;
+;     Dedicated logic registers      ; 920                                        ;
+; Total registers                    ; 920                                        ;
 ; Total pins                         ; 60                                         ;
 ; Total virtual pins                 ; 0                                          ;
-; Total memory bits                  ; 1,236,992                                  ;
+; Total memory bits                  ; 1,630,208                                  ;
 ; Embedded Multiplier 9-bit elements ; 19                                         ;
 ; Total PLLs                         ; 1                                          ;
 +------------------------------------+--------------------------------------------+
@@ -204,6 +206,9 @@ applicable agreement for further details.
 +----------------------------------+-----------------+------------------------------+-----------------------------------------------------------------------------+---------+
 ; File Name with User-Entered Path ; Used in Netlist ; File Type                    ; File Name with Absolute Path                                                ; Library ;
 +----------------------------------+-----------------+------------------------------+-----------------------------------------------------------------------------+---------+
+; NMS_Register.v                   ; yes             ; User Verilog HDL File        ; D:/Git workspace/brainboard-fpga/NMS_Register.v                             ;         ;
+; NMS_Datapath.v                   ; yes             ; User Verilog HDL File        ; D:/Git workspace/brainboard-fpga/NMS_Datapath.v                             ;         ;
+; NMS_AddrCal.v                    ; yes             ; User Verilog HDL File        ; D:/Git workspace/brainboard-fpga/NMS_AddrCal.v                              ;         ;
 ; FS_Datapath.v                    ; yes             ; User Verilog HDL File        ; D:/Git workspace/brainboard-fpga/FS_Datapath.v                              ;         ;
 ; FD_Register.v                    ; yes             ; User Verilog HDL File        ; D:/Git workspace/brainboard-fpga/FD_Register.v                              ;         ;
 ; FD_Datapath.v                    ; yes             ; User Verilog HDL File        ; D:/Git workspace/brainboard-fpga/FD_Datapath.v                              ;         ;
@@ -290,38 +295,38 @@ applicable agreement for further details.
 +----------------------------------+-----------------+------------------------------+-----------------------------------------------------------------------------+---------+
 
 
-+------------------------------------------------------------------------+
-; Analysis & Synthesis Resource Usage Summary                            ;
-+---------------------------------------------+--------------------------+
-; Resource                                    ; Usage                    ;
-+---------------------------------------------+--------------------------+
-; Estimated Total logic elements              ; 2,015                    ;
-;                                             ;                          ;
-; Total combinational functions               ; 1621                     ;
-; Logic element usage by number of LUT inputs ;                          ;
-;     -- 4 input functions                    ; 723                      ;
-;     -- 3 input functions                    ; 339                      ;
-;     -- <=2 input functions                  ; 559                      ;
-;                                             ;                          ;
-; Logic elements by mode                      ;                          ;
-;     -- normal mode                          ; 1143                     ;
-;     -- arithmetic mode                      ; 478                      ;
-;                                             ;                          ;
-; Total registers                             ; 808                      ;
-;     -- Dedicated logic registers            ; 808                      ;
-;     -- I/O registers                        ; 0                        ;
-;                                             ;                          ;
-; I/O pins                                    ; 60                       ;
-; Total memory bits                           ; 1236992                  ;
-; Embedded Multiplier 9-bit elements          ; 19                       ;
-; Total PLLs                                  ; 1                        ;
-;     -- PLLs                                 ; 1                        ;
-;                                             ;                          ;
-; Maximum fan-out node                        ; altera_internal_jtag~TDO ;
-; Maximum fan-out                             ; 348                      ;
-; Total fan-out                               ; 10920                    ;
-; Average fan-out                             ; 3.97                     ;
-+---------------------------------------------+--------------------------+
++-------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary                                                                                   ;
++---------------------------------------------+---------------------------------------------------------------------------------+
+; Resource                                    ; Usage                                                                           ;
++---------------------------------------------+---------------------------------------------------------------------------------+
+; Estimated Total logic elements              ; 2,870                                                                           ;
+;                                             ;                                                                                 ;
+; Total combinational functions               ; 2378                                                                            ;
+; Logic element usage by number of LUT inputs ;                                                                                 ;
+;     -- 4 input functions                    ; 851                                                                             ;
+;     -- 3 input functions                    ; 719                                                                             ;
+;     -- <=2 input functions                  ; 808                                                                             ;
+;                                             ;                                                                                 ;
+; Logic elements by mode                      ;                                                                                 ;
+;     -- normal mode                          ; 1507                                                                            ;
+;     -- arithmetic mode                      ; 871                                                                             ;
+;                                             ;                                                                                 ;
+; Total registers                             ; 920                                                                             ;
+;     -- Dedicated logic registers            ; 920                                                                             ;
+;     -- I/O registers                        ; 0                                                                               ;
+;                                             ;                                                                                 ;
+; I/O pins                                    ; 60                                                                              ;
+; Total memory bits                           ; 1630208                                                                         ;
+; Embedded Multiplier 9-bit elements          ; 19                                                                              ;
+; Total PLLs                                  ; 1                                                                               ;
+;     -- PLLs                                 ; 1                                                                               ;
+;                                             ;                                                                                 ;
+; Maximum fan-out node                        ; pll:pll_inst|altpll:altpll_component|pll_altpll:auto_generated|wire_pll1_clk[0] ;
+; Maximum fan-out                             ; 444                                                                             ;
+; Total fan-out                               ; 14775                                                                           ;
+; Average fan-out                             ; 4.03                                                                            ;
++---------------------------------------------+---------------------------------------------------------------------------------+
 
 
 +-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -329,22 +334,32 @@ applicable agreement for further details.
 +---------------------------------------------------------------------------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------+
 ; Compilation Hierarchy Node                                                                              ; LC Combinationals ; LC Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name                                                                                                                                                                                                                                                                                                                                  ; Library Name ;
 +---------------------------------------------------------------------------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------+
-; |FPGA_Processing                                                                                        ; 1621 (216)        ; 808 (184)    ; 1236992     ; 19           ; 5       ; 7         ; 60   ; 0            ; |FPGA_Processing                                                                                                                                                                                                                                                                                                                                     ; work         ;
+; |FPGA_Processing                                                                                        ; 2378 (231)        ; 920 (184)    ; 1630208     ; 19           ; 5       ; 7         ; 60   ; 0            ; |FPGA_Processing                                                                                                                                                                                                                                                                                                                                     ; work         ;
 ;    |CustomRAM:RAM_custom|                                                                               ; 14 (0)            ; 4 (0)        ; 163840      ; 0            ; 0       ; 0         ; 0    ; 0            ; |FPGA_Processing|CustomRAM:RAM_custom                                                                                                                                                                                                                                                                                                                ; work         ;
 ;       |altsyncram:altsyncram_component|                                                                 ; 14 (0)            ; 4 (0)        ; 163840      ; 0            ; 0       ; 0         ; 0    ; 0            ; |FPGA_Processing|CustomRAM:RAM_custom|altsyncram:altsyncram_component                                                                                                                                                                                                                                                                                ; work         ;
 ;          |altsyncram_isn1:auto_generated|                                                               ; 14 (0)            ; 4 (4)        ; 163840      ; 0            ; 0       ; 0         ; 0    ; 0            ; |FPGA_Processing|CustomRAM:RAM_custom|altsyncram:altsyncram_component|altsyncram_isn1:auto_generated                                                                                                                                                                                                                                                 ; work         ;
 ;             |decode_k8a:rden_decode_b|                                                                  ; 4 (4)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |FPGA_Processing|CustomRAM:RAM_custom|altsyncram:altsyncram_component|altsyncram_isn1:auto_generated|decode_k8a:rden_decode_b                                                                                                                                                                                                                        ; work         ;
 ;             |mux_qob:mux3|                                                                              ; 10 (10)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |FPGA_Processing|CustomRAM:RAM_custom|altsyncram:altsyncram_component|altsyncram_isn1:auto_generated|mux_qob:mux3                                                                                                                                                                                                                                    ; work         ;
-;    |FAST_Controller:Controller|                                                                         ; 32 (32)           ; 17 (17)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |FPGA_Processing|FAST_Controller:Controller                                                                                                                                                                                                                                                                                                          ; work         ;
-;    |FD_AddrCal:AddrCal_FD|                                                                              ; 366 (366)         ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |FPGA_Processing|FD_AddrCal:AddrCal_FD                                                                                                                                                                                                                                                                                                               ; work         ;
-;    |FD_Datapath:Datapath_FD|                                                                            ; 191 (191)         ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |FPGA_Processing|FD_Datapath:Datapath_FD                                                                                                                                                                                                                                                                                                             ; work         ;
-;    |FD_Register:Register_FD|                                                                            ; 23 (23)           ; 85 (85)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |FPGA_Processing|FD_Register:Register_FD                                                                                                                                                                                                                                                                                                             ; work         ;
+;    |FAST_Controller:Controller|                                                                         ; 55 (55)           ; 17 (17)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |FPGA_Processing|FAST_Controller:Controller                                                                                                                                                                                                                                                                                                          ; work         ;
+;    |FD_AddrCal:AddrCal_FD|                                                                              ; 367 (367)         ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |FPGA_Processing|FD_AddrCal:AddrCal_FD                                                                                                                                                                                                                                                                                                               ; work         ;
+;    |FD_Datapath:Datapath_FD|                                                                            ; 179 (179)         ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |FPGA_Processing|FD_Datapath:Datapath_FD                                                                                                                                                                                                                                                                                                             ; work         ;
+;    |FD_Register:Register_FD|                                                                            ; 25 (25)           ; 85 (85)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |FPGA_Processing|FD_Register:Register_FD                                                                                                                                                                                                                                                                                                             ; work         ;
+;    |FS_Datapath:Datapath_FS|                                                                            ; 384 (384)         ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |FPGA_Processing|FS_Datapath:Datapath_FS                                                                                                                                                                                                                                                                                                             ; work         ;
+;    |NMS_AddrCal:AddrCal_NMS|                                                                            ; 207 (207)         ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |FPGA_Processing|NMS_AddrCal:AddrCal_NMS                                                                                                                                                                                                                                                                                                             ; work         ;
+;    |NMS_Datapath:Datapath_NMS|                                                                          ; 96 (96)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |FPGA_Processing|NMS_Datapath:Datapath_NMS                                                                                                                                                                                                                                                                                                           ; work         ;
+;    |NMS_Register:Register_NMS|                                                                          ; 9 (9)             ; 108 (108)    ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |FPGA_Processing|NMS_Register:Register_NMS                                                                                                                                                                                                                                                                                                           ; work         ;
 ;    |RAM:RAM_inst|                                                                                       ; 81 (0)            ; 8 (0)        ; 1048576     ; 0            ; 0       ; 0         ; 0    ; 0            ; |FPGA_Processing|RAM:RAM_inst                                                                                                                                                                                                                                                                                                                        ; work         ;
 ;       |altsyncram:altsyncram_component|                                                                 ; 81 (0)            ; 8 (0)        ; 1048576     ; 0            ; 0       ; 0         ; 0    ; 0            ; |FPGA_Processing|RAM:RAM_inst|altsyncram:altsyncram_component                                                                                                                                                                                                                                                                                        ; work         ;
 ;          |altsyncram_59g1:auto_generated|                                                               ; 81 (1)            ; 8 (8)        ; 1048576     ; 0            ; 0       ; 0         ; 0    ; 0            ; |FPGA_Processing|RAM:RAM_inst|altsyncram:altsyncram_component|altsyncram_59g1:auto_generated                                                                                                                                                                                                                                                         ; work         ;
 ;             |decode_rsa:decode3|                                                                        ; 8 (8)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |FPGA_Processing|RAM:RAM_inst|altsyncram:altsyncram_component|altsyncram_59g1:auto_generated|decode_rsa:decode3                                                                                                                                                                                                                                      ; work         ;
 ;             |decode_rsa:rden_decode|                                                                    ; 8 (8)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |FPGA_Processing|RAM:RAM_inst|altsyncram:altsyncram_component|altsyncram_59g1:auto_generated|decode_rsa:rden_decode                                                                                                                                                                                                                                  ; work         ;
 ;             |mux_qob:mux2|                                                                              ; 64 (64)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |FPGA_Processing|RAM:RAM_inst|altsyncram:altsyncram_component|altsyncram_59g1:auto_generated|mux_qob:mux2                                                                                                                                                                                                                                            ; work         ;
+;    |ScoreRAM:RAM_score|                                                                                 ; 32 (0)            ; 4 (0)        ; 393216      ; 0            ; 0       ; 0         ; 0    ; 0            ; |FPGA_Processing|ScoreRAM:RAM_score                                                                                                                                                                                                                                                                                                                  ; work         ;
+;       |altsyncram:altsyncram_component|                                                                 ; 32 (0)            ; 4 (0)        ; 393216      ; 0            ; 0       ; 0         ; 0    ; 0            ; |FPGA_Processing|ScoreRAM:RAM_score|altsyncram:altsyncram_component                                                                                                                                                                                                                                                                                  ; work         ;
+;          |altsyncram_epq1:auto_generated|                                                               ; 32 (0)            ; 4 (4)        ; 393216      ; 0            ; 0       ; 0         ; 0    ; 0            ; |FPGA_Processing|ScoreRAM:RAM_score|altsyncram:altsyncram_component|altsyncram_epq1:auto_generated                                                                                                                                                                                                                                                   ; work         ;
+;             |decode_rsa:decode2|                                                                        ; 4 (4)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |FPGA_Processing|ScoreRAM:RAM_score|altsyncram:altsyncram_component|altsyncram_epq1:auto_generated|decode_rsa:decode2                                                                                                                                                                                                                                ; work         ;
+;             |decode_rsa:rden_decode_b|                                                                  ; 4 (4)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |FPGA_Processing|ScoreRAM:RAM_score|altsyncram:altsyncram_component|altsyncram_epq1:auto_generated|decode_rsa:rden_decode_b                                                                                                                                                                                                                          ; work         ;
+;             |mux_qob:mux3|                                                                              ; 24 (24)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |FPGA_Processing|ScoreRAM:RAM_score|altsyncram:altsyncram_component|altsyncram_epq1:auto_generated|mux_qob:mux3                                                                                                                                                                                                                                      ; work         ;
 ;    |lpm_divide:Div0|                                                                                    ; 204 (0)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |FPGA_Processing|lpm_divide:Div0                                                                                                                                                                                                                                                                                                                     ; work         ;
 ;       |lpm_divide_6jm:auto_generated|                                                                   ; 204 (0)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |FPGA_Processing|lpm_divide:Div0|lpm_divide_6jm:auto_generated                                                                                                                                                                                                                                                                                       ; work         ;
 ;          |sign_div_unsign_ulh:divider|                                                                  ; 204 (0)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |FPGA_Processing|lpm_divide:Div0|lpm_divide_6jm:auto_generated|sign_div_unsign_ulh:divider                                                                                                                                                                                                                                                           ; work         ;
@@ -416,6 +431,7 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+------+------------------+--------------+--------------+--------------+--------------+---------+------+
 ; CustomRAM:RAM_custom|altsyncram:altsyncram_component|altsyncram_isn1:auto_generated|ALTSYNCRAM                                                                                                        ; AUTO ; Simple Dual Port ; 65536        ; 16           ; 65536        ; 16           ; 1048576 ; None ;
 ; RAM:RAM_inst|altsyncram:altsyncram_component|altsyncram_59g1:auto_generated|ALTSYNCRAM                                                                                                                ; AUTO ; Single Port      ; 65536        ; 16           ; --           ; --           ; 1048576 ; None ;
+; ScoreRAM:RAM_score|altsyncram:altsyncram_component|altsyncram_epq1:auto_generated|ALTSYNCRAM                                                                                                          ; AUTO ; Simple Dual Port ; 65536        ; 16           ; 65536        ; 16           ; 1048576 ; None ;
 ; sld_signaltap:auto_signaltap_0|sld_signaltap_impl:sld_signaltap_body|sld_signaltap_implb:sld_signaltap_body|altsyncram:\stp_non_zero_ram_gen:stp_buffer_ram|altsyncram_0u14:auto_generated|ALTSYNCRAM ; AUTO ; Simple Dual Port ; 8192         ; 3            ; 8192         ; 3            ; 24576   ; None ;
 +-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+------+------------------+--------------+--------------+--------------+--------------+---------+------+
 
@@ -511,6 +527,8 @@ Encoding Type:  One-Hot
 ; const1[8]                                                                                                ; Stuck at VCC due to stuck port data_in ;
 ; const1[9]                                                                                                ; Stuck at GND due to stuck port data_in ;
 ; ScoreRAM:RAM_score|altsyncram:altsyncram_component|altsyncram_epq1:auto_generated|rden_b_store           ; Lost fanout                            ;
+; ScoreRAM:RAM_score|altsyncram:altsyncram_component|altsyncram_epq1:auto_generated|address_reg_b[2]       ; Stuck at GND due to stuck port data_in ;
+; ScoreRAM:RAM_score|altsyncram:altsyncram_component|altsyncram_epq1:auto_generated|out_address_reg_b[2]   ; Stuck at GND due to stuck port data_in ;
 ; CustomRAM:RAM_custom|altsyncram:altsyncram_component|altsyncram_isn1:auto_generated|address_reg_b[2]     ; Stuck at GND due to stuck port data_in ;
 ; CustomRAM:RAM_custom|altsyncram:altsyncram_component|altsyncram_isn1:auto_generated|out_address_reg_b[2] ; Stuck at GND due to stuck port data_in ;
 ; FD_Register:Register_FD|reg_Selpixel_12[1,2]                                                             ; Stuck at GND due to stuck port data_in ;
@@ -582,7 +600,7 @@ Encoding Type:  One-Hot
 ; FAST_Controller:Controller|curState~18                                                                   ; Lost fanout                            ;
 ; FAST_Controller:Controller|curState~19                                                                   ; Lost fanout                            ;
 ; X_int[3]                                                                                                 ; Lost fanout                            ;
-; Total Number of Removed Registers = 162                                                                  ;                                        ;
+; Total Number of Removed Registers = 164                                                                  ;                                        ;
 +----------------------------------------------------------------------------------------------------------+----------------------------------------+
 
 
@@ -591,6 +609,8 @@ Encoding Type:  One-Hot
 +------------------------------------------------------------------------------------------------------+---------------------------+----------------------------------------------------------------------------------------------------------+
 ; Register name                                                                                        ; Reason for Removal        ; Registers Removed due to This Register                                                                   ;
 +------------------------------------------------------------------------------------------------------+---------------------------+----------------------------------------------------------------------------------------------------------+
+; ScoreRAM:RAM_score|altsyncram:altsyncram_component|altsyncram_epq1:auto_generated|address_reg_b[2]   ; Stuck at GND              ; ScoreRAM:RAM_score|altsyncram:altsyncram_component|altsyncram_epq1:auto_generated|out_address_reg_b[2]   ;
+;                                                                                                      ; due to stuck port data_in ;                                                                                                          ;
 ; CustomRAM:RAM_custom|altsyncram:altsyncram_component|altsyncram_isn1:auto_generated|address_reg_b[2] ; Stuck at GND              ; CustomRAM:RAM_custom|altsyncram:altsyncram_component|altsyncram_isn1:auto_generated|out_address_reg_b[2] ;
 ;                                                                                                      ; due to stuck port data_in ;                                                                                                          ;
 ; A_int[4]                                                                                             ; Stuck at GND              ; X_int[3]                                                                                                 ;
@@ -603,12 +623,12 @@ Encoding Type:  One-Hot
 +----------------------------------------------+-------+
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
-; Total registers                              ; 808   ;
+; Total registers                              ; 920   ;
 ; Number of registers using Synchronous Clear  ; 59    ;
 ; Number of registers using Synchronous Load   ; 63    ;
 ; Number of registers using Asynchronous Clear ; 409   ;
 ; Number of registers using Asynchronous Load  ; 0     ;
-; Number of registers using Clock Enable       ; 590   ;
+; Number of registers using Clock Enable       ; 698   ;
 ; Number of registers using Preset             ; 0     ;
 +----------------------------------------------+-------+
 
@@ -644,27 +664,24 @@ Encoding Type:  One-Hot
 +--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------+
 
 
-+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                                                                                                       ;
-+--------------------+-----------+---------------+----------------------+------------------------+------------+------------------------------------------------------------------------------------------------------------------------+
-; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                                                                                             ;
-+--------------------+-----------+---------------+----------------------+------------------------+------------+------------------------------------------------------------------------------------------------------------------------+
-; 3:1                ; 18 bits   ; 36 LEs        ; 18 LEs               ; 18 LEs                 ; Yes        ; |FPGA_Processing|X_int[12]                                                                                             ;
-; 3:1                ; 15 bits   ; 30 LEs        ; 15 LEs               ; 15 LEs                 ; Yes        ; |FPGA_Processing|vadr[14]                                                                                              ;
-; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; No         ; |FPGA_Processing|ns                                                                                                    ;
-; 3:1                ; 4 bits    ; 8 LEs         ; 8 LEs                ; 0 LEs                  ; No         ; |FPGA_Processing|G[5]                                                                                                  ;
-; 3:1                ; 3 bits    ; 6 LEs         ; 6 LEs                ; 0 LEs                  ; No         ; |FPGA_Processing|R[4]                                                                                                  ;
-; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |FPGA_Processing|B[4]                                                                                                  ;
-; 3:1                ; 16 bits   ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; No         ; |FPGA_Processing|AMAmem_data                                                                                           ;
-; 17:1               ; 2 bits    ; 22 LEs        ; 20 LEs               ; 2 LEs                  ; No         ; |FPGA_Processing|FD_AddrCal:AddrCal_FD|srmAddr[4]                                                                      ;
-; 17:1               ; 10 bits   ; 110 LEs       ; 110 LEs              ; 0 LEs                  ; No         ; |FPGA_Processing|FD_AddrCal:AddrCal_FD|srmAddr[14]                                                                     ;
-; 3:1                ; 4 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; Yes        ; |FPGA_Processing|sld_hub:auto_hub|sld_jtag_hub:\jtag_hub_gen:sld_jtag_hub_inst|hub_minor_ver_reg[0]                    ;
-; 4:1                ; 5 bits    ; 10 LEs        ; 5 LEs                ; 5 LEs                  ; Yes        ; |FPGA_Processing|sld_hub:auto_hub|sld_jtag_hub:\jtag_hub_gen:sld_jtag_hub_inst|mixer_addr_reg[4]                       ;
-; 5:1                ; 5 bits    ; 15 LEs        ; 5 LEs                ; 10 LEs                 ; Yes        ; |FPGA_Processing|sld_hub:auto_hub|sld_jtag_hub:\jtag_hub_gen:sld_jtag_hub_inst|sld_rom_sr:hub_info_reg|word_counter[0] ;
-; 6:1                ; 9 bits    ; 36 LEs        ; 9 LEs                ; 27 LEs                 ; Yes        ; |FPGA_Processing|sld_hub:auto_hub|sld_jtag_hub:\jtag_hub_gen:sld_jtag_hub_inst|irsr_reg[2]                             ;
-; 34:1               ; 4 bits    ; 88 LEs        ; 56 LEs               ; 32 LEs                 ; Yes        ; |FPGA_Processing|sld_hub:auto_hub|sld_jtag_hub:\jtag_hub_gen:sld_jtag_hub_inst|design_hash_reg[0]                      ;
-; 20:1               ; 4 bits    ; 52 LEs        ; 32 LEs               ; 20 LEs                 ; Yes        ; |FPGA_Processing|sld_hub:auto_hub|sld_jtag_hub:\jtag_hub_gen:sld_jtag_hub_inst|sld_rom_sr:hub_info_reg|WORD_SR[0]      ;
-+--------------------+-----------+---------------+----------------------+------------------------+------------+------------------------------------------------------------------------------------------------------------------------+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                                     ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+------------------------------------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                           ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+------------------------------------------------------+
+; 3:1                ; 18 bits   ; 36 LEs        ; 18 LEs               ; 18 LEs                 ; Yes        ; |FPGA_Processing|X_int[15]                           ;
+; 3:1                ; 15 bits   ; 30 LEs        ; 15 LEs               ; 15 LEs                 ; Yes        ; |FPGA_Processing|vadr[12]                            ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 16 LEs               ; 0 LEs                  ; No         ; |FPGA_Processing|FS_Datapath:Datapath_FS|scoreVal[5] ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; No         ; |FPGA_Processing|ns                                  ;
+; 3:1                ; 4 bits    ; 8 LEs         ; 8 LEs                ; 0 LEs                  ; No         ; |FPGA_Processing|G[3]                                ;
+; 3:1                ; 3 bits    ; 6 LEs         ; 6 LEs                ; 0 LEs                  ; No         ; |FPGA_Processing|R[4]                                ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |FPGA_Processing|B[3]                                ;
+; 4:1                ; 16 bits   ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; No         ; |FPGA_Processing|AMAmem_data                         ;
+; 9:1                ; 2 bits    ; 12 LEs        ; 8 LEs                ; 4 LEs                  ; No         ; |FPGA_Processing|NMS_AddrCal:AddrCal_NMS|srmAddr[0]  ;
+; 9:1                ; 13 bits   ; 78 LEs        ; 78 LEs               ; 0 LEs                  ; No         ; |FPGA_Processing|NMS_AddrCal:AddrCal_NMS|srmAddr[12] ;
+; 17:1               ; 2 bits    ; 22 LEs        ; 20 LEs               ; 2 LEs                  ; No         ; |FPGA_Processing|FD_AddrCal:AddrCal_FD|srmAddr[3]    ;
+; 17:1               ; 10 bits   ; 110 LEs       ; 110 LEs              ; 0 LEs                  ; No         ; |FPGA_Processing|FD_AddrCal:AddrCal_FD|srmAddr[14]   ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+------------------------------------------------------+
 
 
 +----------------------------------------------------------------------------------------------------+
@@ -1694,15 +1711,14 @@ Note: In order to hide this table in the UI and the text report file, please set
 +---------------------------------------+----------------+
 
 
-+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Port Connectivity Checks: "ScoreRAM:RAM_score"                                                                                                                                        ;
-+-----------+--------+----------+-------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Port      ; Type   ; Severity ; Details                                                                                                                                               ;
-+-----------+--------+----------+-------------------------------------------------------------------------------------------------------------------------------------------------------+
-; data      ; Input  ; Warning  ; Input port expression (12 bits) is smaller than the input port (16 bits) it drives.  Extra input bit(s) "data[15..12]" will be connected to GND.      ;
-; wraddress ; Input  ; Warning  ; Input port expression (15 bits) is smaller than the input port (16 bits) it drives.  Extra input bit(s) "wraddress[15..15]" will be connected to GND. ;
-; q         ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed.                                                                   ;
-+-----------+--------+----------+-------------------------------------------------------------------------------------------------------------------------------------------------------+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "ScoreRAM:RAM_score"                                                                                                                                       ;
++-----------+-------+----------+-------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port      ; Type  ; Severity ; Details                                                                                                                                               ;
++-----------+-------+----------+-------------------------------------------------------------------------------------------------------------------------------------------------------+
+; data      ; Input ; Warning  ; Input port expression (12 bits) is smaller than the input port (16 bits) it drives.  Extra input bit(s) "data[15..12]" will be connected to GND.      ;
+; wraddress ; Input ; Warning  ; Input port expression (15 bits) is smaller than the input port (16 bits) it drives.  Extra input bit(s) "wraddress[15..15]" will be connected to GND. ;
++-----------+-------+----------+-------------------------------------------------------------------------------------------------------------------------------------------------------+
 
 
 +---------------------------------------------------------------------------------------------------------------------+
@@ -1715,14 +1731,32 @@ Note: In order to hide this table in the UI and the text report file, please set
 +-----------+--------+----------+-------------------------------------------------------------------------------------+
 
 
-+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Port Connectivity Checks: "FS_Datapath:Datapath_FS"                                                                                                                                                                ;
-+-----------+--------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Port      ; Type   ; Severity ; Details                                                                                                                                                                            ;
-+-----------+--------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; refAddr   ; Input  ; Warning  ; Input port expression (16 bits) is wider than the input port (15 bits) it drives.  The 1 most-significant bit(s) in the expression will be dangling if they have no other fanouts. ;
-; outrefPxl ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed.                                                                                                ;
-+-----------+--------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "NMS_Register:Register_NMS"                                                                                                                                                             ;
++-----------+-------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port      ; Type  ; Severity ; Details                                                                                                                                                                            ;
++-----------+-------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; scoreData ; Input ; Warning  ; Input port expression (16 bits) is wider than the input port (12 bits) it drives.  The 4 most-significant bit(s) in the expression will be dangling if they have no other fanouts. ;
++-----------+-------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+
+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "NMS_AddrCal:AddrCal_NMS"                                                                                                                                                              ;
++---------+--------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port    ; Type   ; Severity ; Details                                                                                                                                                                            ;
++---------+--------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; refAddr ; Input  ; Warning  ; Input port expression (16 bits) is wider than the input port (15 bits) it drives.  The 1 most-significant bit(s) in the expression will be dangling if they have no other fanouts. ;
+; srmAddr ; Output ; Warning  ; Output or bidir port (15 bits) is smaller than the port expression (16 bits) it drives.  The 1 most-significant bit(s) in the port expression will be connected to GND.            ;
++---------+--------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+
+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "FS_Datapath:Datapath_FS"                                                                                                                                                             ;
++---------+-------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port    ; Type  ; Severity ; Details                                                                                                                                                                            ;
++---------+-------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; refAddr ; Input ; Warning  ; Input port expression (16 bits) is wider than the input port (15 bits) it drives.  The 1 most-significant bit(s) in the expression will be dangling if they have no other fanouts. ;
++---------+-------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
 
 +--------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -1754,17 +1788,14 @@ Note: In order to hide this table in the UI and the text report file, please set
 +---------+--------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
 
-+--------------------------------------------------------------------------------------------------------------------------+
-; Port Connectivity Checks: "FAST_Controller:Controller"                                                                   ;
-+----------------+--------+----------+-------------------------------------------------------------------------------------+
-; Port           ; Type   ; Severity ; Details                                                                             ;
-+----------------+--------+----------+-------------------------------------------------------------------------------------+
-; FD_refAddr[15] ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
-; NMS_refAddr    ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
-; NMS_calAddr    ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
-; NMS_regAddr    ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
-; NMS_readEn     ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
-+----------------+--------+----------+-------------------------------------------------------------------------------------+
++---------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "FAST_Controller:Controller"                                                                    ;
++-----------------+--------+----------+-------------------------------------------------------------------------------------+
+; Port            ; Type   ; Severity ; Details                                                                             ;
++-----------------+--------+----------+-------------------------------------------------------------------------------------+
+; FD_refAddr[15]  ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
+; NMS_refAddr[15] ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++-----------------+--------+----------+-------------------------------------------------------------------------------------+
 
 
 +-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -1776,14 +1807,13 @@ Note: In order to hide this table in the UI and the text report file, please set
 +----------------+------------------+---------------------+------------------+--------------+----------+------------------------+----------------------+--------------------+-----------------------------+-----------------+------------------+--------------------------+
 
 
-+---------------------------------+
-; Elapsed Time Per Partition      ;
-+------------------+--------------+
-; Partition Name   ; Elapsed Time ;
-+------------------+--------------+
-; Top              ; 00:00:10     ;
-; sld_hub:auto_hub ; 00:00:01     ;
-+------------------+--------------+
++-------------------------------+
+; Elapsed Time Per Partition    ;
++----------------+--------------+
+; Partition Name ; Elapsed Time ;
++----------------+--------------+
+; Top            ; 00:00:10     ;
++----------------+--------------+
 
 
 +-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -1807,9 +1837,15 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus II 64-Bit Analysis & Synthesis
     Info: Version 13.1.0 Build 162 10/23/2013 SJ Web Edition
-    Info: Processing started: Mon Jul 10 21:25:04 2017
+    Info: Processing started: Mon Jul 10 21:37:08 2017
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off SoC_Brain -c SoC_Brain
 Info (20030): Parallel compilation is enabled and will use 2 of the 2 processors detected
+Info (12021): Found 1 design units, including 1 entities, in source file nms_register.v
+    Info (12023): Found entity 1: NMS_Register
+Info (12021): Found 1 design units, including 1 entities, in source file nms_datapath.v
+    Info (12023): Found entity 1: NMS_Datapath
+Info (12021): Found 1 design units, including 1 entities, in source file nms_addrcal.v
+    Info (12023): Found entity 1: NMS_AddrCal
 Info (12021): Found 1 design units, including 1 entities, in source file fs_datapath.v
     Info (12023): Found entity 1: FS_Datapath
 Info (12021): Found 1 design units, including 1 entities, in source file fd_register.v
@@ -1842,7 +1878,7 @@ Warning (10230): Verilog HDL assignment warning at FPGA_Processing.v(159): trunc
 Warning (10230): Verilog HDL assignment warning at FPGA_Processing.v(180): truncated value with size 6 to match size of target (5)
 Warning (10235): Verilog HDL Always Construct warning at FPGA_Processing.v(339): variable "vdd" is read inside the Always Construct but isn't in the Always Construct's Event Control
 Warning (10766): Verilog HDL Synthesis Attribute warning at FPGA_Processing.v(339): ignoring full_case attribute on case statement with explicit default case item
-Warning (10230): Verilog HDL assignment warning at FPGA_Processing.v(453): truncated value with size 9 to match size of target (8)
+Warning (10230): Verilog HDL assignment warning at FPGA_Processing.v(454): truncated value with size 9 to match size of target (8)
 Info (12128): Elaborating entity "pll" for hierarchy "pll:pll_inst"
 Info (12128): Elaborating entity "altpll" for hierarchy "pll:pll_inst|altpll:altpll_component"
 Info (12130): Elaborated megafunction instantiation "pll:pll_inst|altpll:altpll_component"
@@ -1982,6 +2018,10 @@ Warning (10230): Verilog HDL assignment warning at FD_Datapath.v(364): truncated
 Info (12128): Elaborating entity "FS_Datapath" for hierarchy "FS_Datapath:Datapath_FS"
 Warning (10230): Verilog HDL assignment warning at FS_Datapath.v(50): truncated value with size 9 to match size of target (8)
 Warning (10230): Verilog HDL assignment warning at FS_Datapath.v(51): truncated value with size 9 to match size of target (8)
+Info (12128): Elaborating entity "NMS_AddrCal" for hierarchy "NMS_AddrCal:AddrCal_NMS"
+Warning (10230): Verilog HDL assignment warning at NMS_AddrCal.v(16): truncated value with size 32 to match size of target (15)
+Info (12128): Elaborating entity "NMS_Register" for hierarchy "NMS_Register:Register_NMS"
+Info (12128): Elaborating entity "NMS_Datapath" for hierarchy "NMS_Datapath:Datapath_NMS"
 Info (12128): Elaborating entity "CustomRAM" for hierarchy "CustomRAM:RAM_custom"
 Info (12128): Elaborating entity "altsyncram" for hierarchy "CustomRAM:RAM_custom|altsyncram:altsyncram_component"
 Info (12130): Elaborated megafunction instantiation "CustomRAM:RAM_custom|altsyncram:altsyncram_component"
@@ -2039,13 +2079,25 @@ Info (12021): Found 1 design units, including 1 entities, in source file db/alts
     Info (12023): Found entity 1: altsyncram_epq1
 Info (12128): Elaborating entity "altsyncram_epq1" for hierarchy "ScoreRAM:RAM_score|altsyncram:altsyncram_component|altsyncram_epq1:auto_generated"
 Warning (12011): Net is missing source, defaulting to GND
-    Warning (12110): Net "FD_memAddr[15]" is missing source, defaulting to GND
+    Warning (12110): Net "NMS_memAddr[15]" is missing source, defaulting to GND
+Warning (12011): Net is missing source, defaulting to GND
+    Warning (12110): Net "NMS_memAddr[15]" is missing source, defaulting to GND
+Warning (12011): Net is missing source, defaulting to GND
+    Warning (12110): Net "NMS_memAddr[15]" is missing source, defaulting to GND
+Warning (12011): Net is missing source, defaulting to GND
+    Warning (12110): Net "NMS_memAddr[15]" is missing source, defaulting to GND
 Warning (12011): Net is missing source, defaulting to GND
     Warning (12110): Net "FD_memAddr[15]" is missing source, defaulting to GND
+    Warning (12110): Net "NMS_memAddr[15]" is missing source, defaulting to GND
 Warning (12011): Net is missing source, defaulting to GND
     Warning (12110): Net "FD_memAddr[15]" is missing source, defaulting to GND
+    Warning (12110): Net "NMS_memAddr[15]" is missing source, defaulting to GND
 Warning (12011): Net is missing source, defaulting to GND
     Warning (12110): Net "FD_memAddr[15]" is missing source, defaulting to GND
+    Warning (12110): Net "NMS_memAddr[15]" is missing source, defaulting to GND
+Warning (12011): Net is missing source, defaulting to GND
+    Warning (12110): Net "FD_memAddr[15]" is missing source, defaulting to GND
+    Warning (12110): Net "NMS_memAddr[15]" is missing source, defaulting to GND
 Info (12021): Found 1 design units, including 1 entities, in source file db/altsyncram_0u14.tdf
     Info (12023): Found entity 1: altsyncram_0u14
 Info (12021): Found 1 design units, including 1 entities, in source file db/mux_vsc.tdf
@@ -2069,66 +2121,18 @@ Info (12021): Found 1 design units, including 1 entities, in source file db/cmpr
 Info (12033): Analysis and Synthesis generated SignalTap II or debug node instance "auto_signaltap_0"
 Warning (14284): Synthesized away the following node(s):
     Warning (14285): Synthesized away the following RAM node(s):
-        Warning (14320): Synthesized away node "ScoreRAM:RAM_score|altsyncram:altsyncram_component|altsyncram_epq1:auto_generated|ram_block1a0"
-        Warning (14320): Synthesized away node "ScoreRAM:RAM_score|altsyncram:altsyncram_component|altsyncram_epq1:auto_generated|ram_block1a1"
-        Warning (14320): Synthesized away node "ScoreRAM:RAM_score|altsyncram:altsyncram_component|altsyncram_epq1:auto_generated|ram_block1a2"
-        Warning (14320): Synthesized away node "ScoreRAM:RAM_score|altsyncram:altsyncram_component|altsyncram_epq1:auto_generated|ram_block1a3"
-        Warning (14320): Synthesized away node "ScoreRAM:RAM_score|altsyncram:altsyncram_component|altsyncram_epq1:auto_generated|ram_block1a4"
-        Warning (14320): Synthesized away node "ScoreRAM:RAM_score|altsyncram:altsyncram_component|altsyncram_epq1:auto_generated|ram_block1a5"
-        Warning (14320): Synthesized away node "ScoreRAM:RAM_score|altsyncram:altsyncram_component|altsyncram_epq1:auto_generated|ram_block1a6"
-        Warning (14320): Synthesized away node "ScoreRAM:RAM_score|altsyncram:altsyncram_component|altsyncram_epq1:auto_generated|ram_block1a7"
-        Warning (14320): Synthesized away node "ScoreRAM:RAM_score|altsyncram:altsyncram_component|altsyncram_epq1:auto_generated|ram_block1a8"
-        Warning (14320): Synthesized away node "ScoreRAM:RAM_score|altsyncram:altsyncram_component|altsyncram_epq1:auto_generated|ram_block1a9"
-        Warning (14320): Synthesized away node "ScoreRAM:RAM_score|altsyncram:altsyncram_component|altsyncram_epq1:auto_generated|ram_block1a10"
-        Warning (14320): Synthesized away node "ScoreRAM:RAM_score|altsyncram:altsyncram_component|altsyncram_epq1:auto_generated|ram_block1a11"
         Warning (14320): Synthesized away node "ScoreRAM:RAM_score|altsyncram:altsyncram_component|altsyncram_epq1:auto_generated|ram_block1a12"
         Warning (14320): Synthesized away node "ScoreRAM:RAM_score|altsyncram:altsyncram_component|altsyncram_epq1:auto_generated|ram_block1a13"
         Warning (14320): Synthesized away node "ScoreRAM:RAM_score|altsyncram:altsyncram_component|altsyncram_epq1:auto_generated|ram_block1a14"
         Warning (14320): Synthesized away node "ScoreRAM:RAM_score|altsyncram:altsyncram_component|altsyncram_epq1:auto_generated|ram_block1a15"
-        Warning (14320): Synthesized away node "ScoreRAM:RAM_score|altsyncram:altsyncram_component|altsyncram_epq1:auto_generated|ram_block1a16"
-        Warning (14320): Synthesized away node "ScoreRAM:RAM_score|altsyncram:altsyncram_component|altsyncram_epq1:auto_generated|ram_block1a17"
-        Warning (14320): Synthesized away node "ScoreRAM:RAM_score|altsyncram:altsyncram_component|altsyncram_epq1:auto_generated|ram_block1a18"
-        Warning (14320): Synthesized away node "ScoreRAM:RAM_score|altsyncram:altsyncram_component|altsyncram_epq1:auto_generated|ram_block1a19"
-        Warning (14320): Synthesized away node "ScoreRAM:RAM_score|altsyncram:altsyncram_component|altsyncram_epq1:auto_generated|ram_block1a20"
-        Warning (14320): Synthesized away node "ScoreRAM:RAM_score|altsyncram:altsyncram_component|altsyncram_epq1:auto_generated|ram_block1a21"
-        Warning (14320): Synthesized away node "ScoreRAM:RAM_score|altsyncram:altsyncram_component|altsyncram_epq1:auto_generated|ram_block1a22"
-        Warning (14320): Synthesized away node "ScoreRAM:RAM_score|altsyncram:altsyncram_component|altsyncram_epq1:auto_generated|ram_block1a23"
-        Warning (14320): Synthesized away node "ScoreRAM:RAM_score|altsyncram:altsyncram_component|altsyncram_epq1:auto_generated|ram_block1a24"
-        Warning (14320): Synthesized away node "ScoreRAM:RAM_score|altsyncram:altsyncram_component|altsyncram_epq1:auto_generated|ram_block1a25"
-        Warning (14320): Synthesized away node "ScoreRAM:RAM_score|altsyncram:altsyncram_component|altsyncram_epq1:auto_generated|ram_block1a26"
-        Warning (14320): Synthesized away node "ScoreRAM:RAM_score|altsyncram:altsyncram_component|altsyncram_epq1:auto_generated|ram_block1a27"
         Warning (14320): Synthesized away node "ScoreRAM:RAM_score|altsyncram:altsyncram_component|altsyncram_epq1:auto_generated|ram_block1a28"
         Warning (14320): Synthesized away node "ScoreRAM:RAM_score|altsyncram:altsyncram_component|altsyncram_epq1:auto_generated|ram_block1a29"
         Warning (14320): Synthesized away node "ScoreRAM:RAM_score|altsyncram:altsyncram_component|altsyncram_epq1:auto_generated|ram_block1a30"
         Warning (14320): Synthesized away node "ScoreRAM:RAM_score|altsyncram:altsyncram_component|altsyncram_epq1:auto_generated|ram_block1a31"
-        Warning (14320): Synthesized away node "ScoreRAM:RAM_score|altsyncram:altsyncram_component|altsyncram_epq1:auto_generated|ram_block1a32"
-        Warning (14320): Synthesized away node "ScoreRAM:RAM_score|altsyncram:altsyncram_component|altsyncram_epq1:auto_generated|ram_block1a33"
-        Warning (14320): Synthesized away node "ScoreRAM:RAM_score|altsyncram:altsyncram_component|altsyncram_epq1:auto_generated|ram_block1a34"
-        Warning (14320): Synthesized away node "ScoreRAM:RAM_score|altsyncram:altsyncram_component|altsyncram_epq1:auto_generated|ram_block1a35"
-        Warning (14320): Synthesized away node "ScoreRAM:RAM_score|altsyncram:altsyncram_component|altsyncram_epq1:auto_generated|ram_block1a36"
-        Warning (14320): Synthesized away node "ScoreRAM:RAM_score|altsyncram:altsyncram_component|altsyncram_epq1:auto_generated|ram_block1a37"
-        Warning (14320): Synthesized away node "ScoreRAM:RAM_score|altsyncram:altsyncram_component|altsyncram_epq1:auto_generated|ram_block1a38"
-        Warning (14320): Synthesized away node "ScoreRAM:RAM_score|altsyncram:altsyncram_component|altsyncram_epq1:auto_generated|ram_block1a39"
-        Warning (14320): Synthesized away node "ScoreRAM:RAM_score|altsyncram:altsyncram_component|altsyncram_epq1:auto_generated|ram_block1a40"
-        Warning (14320): Synthesized away node "ScoreRAM:RAM_score|altsyncram:altsyncram_component|altsyncram_epq1:auto_generated|ram_block1a41"
-        Warning (14320): Synthesized away node "ScoreRAM:RAM_score|altsyncram:altsyncram_component|altsyncram_epq1:auto_generated|ram_block1a42"
-        Warning (14320): Synthesized away node "ScoreRAM:RAM_score|altsyncram:altsyncram_component|altsyncram_epq1:auto_generated|ram_block1a43"
         Warning (14320): Synthesized away node "ScoreRAM:RAM_score|altsyncram:altsyncram_component|altsyncram_epq1:auto_generated|ram_block1a44"
         Warning (14320): Synthesized away node "ScoreRAM:RAM_score|altsyncram:altsyncram_component|altsyncram_epq1:auto_generated|ram_block1a45"
         Warning (14320): Synthesized away node "ScoreRAM:RAM_score|altsyncram:altsyncram_component|altsyncram_epq1:auto_generated|ram_block1a46"
         Warning (14320): Synthesized away node "ScoreRAM:RAM_score|altsyncram:altsyncram_component|altsyncram_epq1:auto_generated|ram_block1a47"
-        Warning (14320): Synthesized away node "ScoreRAM:RAM_score|altsyncram:altsyncram_component|altsyncram_epq1:auto_generated|ram_block1a48"
-        Warning (14320): Synthesized away node "ScoreRAM:RAM_score|altsyncram:altsyncram_component|altsyncram_epq1:auto_generated|ram_block1a49"
-        Warning (14320): Synthesized away node "ScoreRAM:RAM_score|altsyncram:altsyncram_component|altsyncram_epq1:auto_generated|ram_block1a50"
-        Warning (14320): Synthesized away node "ScoreRAM:RAM_score|altsyncram:altsyncram_component|altsyncram_epq1:auto_generated|ram_block1a51"
-        Warning (14320): Synthesized away node "ScoreRAM:RAM_score|altsyncram:altsyncram_component|altsyncram_epq1:auto_generated|ram_block1a52"
-        Warning (14320): Synthesized away node "ScoreRAM:RAM_score|altsyncram:altsyncram_component|altsyncram_epq1:auto_generated|ram_block1a53"
-        Warning (14320): Synthesized away node "ScoreRAM:RAM_score|altsyncram:altsyncram_component|altsyncram_epq1:auto_generated|ram_block1a54"
-        Warning (14320): Synthesized away node "ScoreRAM:RAM_score|altsyncram:altsyncram_component|altsyncram_epq1:auto_generated|ram_block1a55"
-        Warning (14320): Synthesized away node "ScoreRAM:RAM_score|altsyncram:altsyncram_component|altsyncram_epq1:auto_generated|ram_block1a56"
-        Warning (14320): Synthesized away node "ScoreRAM:RAM_score|altsyncram:altsyncram_component|altsyncram_epq1:auto_generated|ram_block1a57"
-        Warning (14320): Synthesized away node "ScoreRAM:RAM_score|altsyncram:altsyncram_component|altsyncram_epq1:auto_generated|ram_block1a58"
-        Warning (14320): Synthesized away node "ScoreRAM:RAM_score|altsyncram:altsyncram_component|altsyncram_epq1:auto_generated|ram_block1a59"
         Warning (14320): Synthesized away node "ScoreRAM:RAM_score|altsyncram:altsyncram_component|altsyncram_epq1:auto_generated|ram_block1a60"
         Warning (14320): Synthesized away node "ScoreRAM:RAM_score|altsyncram:altsyncram_component|altsyncram_epq1:auto_generated|ram_block1a61"
         Warning (14320): Synthesized away node "ScoreRAM:RAM_score|altsyncram:altsyncram_component|altsyncram_epq1:auto_generated|ram_block1a62"
@@ -2409,18 +2413,13 @@ Info (12133): Instantiated megafunction "lpm_mult:Mult7" with the following para
     Info (12134): Parameter "MAXIMIZE_SPEED" = "5"
 Info (12021): Found 1 design units, including 1 entities, in source file db/mult_dft.tdf
     Info (12023): Found entity 1: mult_dft
-Warning (12241): 4 hierarchies have connectivity warnings - see the Connectivity Checks report folder
+Warning (12241): 6 hierarchies have connectivity warnings - see the Connectivity Checks report folder
 Info (13014): Ignored 42 buffer(s)
     Info (13019): Ignored 42 SOFT buffer(s)
 Info (13000): Registers with preset signals will power-up high
 Info (13003): DEV_CLRn pin will set, and not reset, register with preset signal due to NOT Gate Push-Back
 Info (286031): Timing-Driven Synthesis is running on partition "Top"
 Info (17049): 6 registers lost all their fanouts during netlist optimizations.
-Info (13000): Registers with preset signals will power-up high
-Info (13003): DEV_CLRn pin will set, and not reset, register with preset signal due to NOT Gate Push-Back
-Warning (13024): Output pins are stuck at VCC or GND
-    Warning (13410): Pin "sld_hub:auto_hub|receive[0][0]" is stuck at GND
-Info (286031): Timing-Driven Synthesis is running on partition "sld_hub:auto_hub"
 Info (144001): Generated suppressed messages file D:/Git workspace/brainboard-fpga/output_files/SoC_Brain.map.smsg
 Critical Warning (35025): Partially connected in-system debug instance "auto_signaltap_0" to 5 of its 7 required data inputs, trigger inputs, acquisition clocks, and dynamic pins.  There were 0 illegal, 0 inaccessible, and 2 missing sources or connections.
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
@@ -2434,19 +2433,19 @@ Warning (21074): Design contains 8 input pin(s) that do not drive logic
     Warning (15610): No output dependent on input pin "vpo[5]"
     Warning (15610): No output dependent on input pin "vpo[6]"
     Warning (15610): No output dependent on input pin "vpo[7]"
-Info (21057): Implemented 2282 device resources after synthesis - the final resource count might be different
+Info (21057): Implemented 3198 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 43 input pins
     Info (21059): Implemented 5 output pins
     Info (21060): Implemented 16 bidirectional pins
-    Info (21061): Implemented 2046 logic cells
-    Info (21064): Implemented 151 RAM segments
+    Info (21061): Implemented 2914 logic cells
+    Info (21064): Implemented 199 RAM segments
     Info (21065): Implemented 1 PLLs
     Info (21062): Implemented 19 DSP elements
-Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 335 warnings
-    Info: Peak virtual memory: 587 megabytes
-    Info: Processing ended: Mon Jul 10 21:25:26 2017
-    Info: Elapsed time: 00:00:22
-    Info: Total CPU time (on all processors): 00:00:23
+Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 298 warnings
+    Info: Peak virtual memory: 574 megabytes
+    Info: Processing ended: Mon Jul 10 21:37:32 2017
+    Info: Elapsed time: 00:00:24
+    Info: Total CPU time (on all processors): 00:00:24
 
 
 +------------------------------------------+
