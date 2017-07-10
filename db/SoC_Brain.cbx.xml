@@ -13,6 +13,7 @@
 		<CBX_INST_ENTRY INSTANCE_NAME="|FPGA_Processing|lpm_mult:Mult6" CBX_FILE_NAME="mult_6ft.tdf"/>
 		<CBX_INST_ENTRY INSTANCE_NAME="|FPGA_Processing|sld_signaltap:auto_signaltap_0|sld_signaltap_impl:sld_signaltap_body|sld_signaltap_implb:sld_signaltap_body|altsyncram:\stp_non_zero_ram_gen:stp_buffer_ram" CBX_FILE_NAME="altsyncram_0u14.tdf"/>
 		<CBX_INST_ENTRY INSTANCE_NAME="|FPGA_Processing|sld_signaltap:auto_signaltap_0|sld_signaltap_impl:sld_signaltap_body|sld_signaltap_implb:sld_signaltap_body|sld_offload_buffer_mgr:\stp_non_zero_depth_offload_gen:stp_offload_buff_mgr_inst|LPM_COUNTER:status_advance_pointer_counter" CBX_FILE_NAME="cntr_igi.tdf"/>
+		<CBX_INST_ENTRY INSTANCE_NAME="|FPGA_Processing|ScoreRAM:RAM_score|altsyncram:altsyncram_component" CBX_FILE_NAME="altsyncram_epq1.tdf"/>
 		<CBX_INST_ENTRY INSTANCE_NAME="|FPGA_Processing|lpm_mult:Mult7" CBX_FILE_NAME="mult_dft.tdf"/>
 		<CBX_INST_ENTRY INSTANCE_NAME="|FPGA_Processing|pll:pll_inst|altpll:altpll_component" CBX_FILE_NAME="pll_altpll.v"/>
 		<CBX_INST_ENTRY INSTANCE_NAME="|FPGA_Processing|sld_signaltap:auto_signaltap_0|sld_signaltap_impl:sld_signaltap_body|sld_signaltap_implb:sld_signaltap_body|altdpram:\stp_non_zero_ram_gen:attribute_mem_gen:attribute_mem|lpm_mux:mux" CBX_FILE_NAME="mux_vsc.tdf"/>

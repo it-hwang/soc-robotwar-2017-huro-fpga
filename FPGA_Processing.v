@@ -540,6 +540,37 @@ FD_Datapath Datapath_FD(
 	.outPxl16(FD_datapathOut16),
 	.outThreshold(FD_dataPathThreshold), 
 	.isCorner(FD_isCorner));
+	
+wire [7:0]	FS_refPixelOut;
+wire [11:0]	FS_scoreVal;
+wire [14:0]	FS_refAddrOut;
+
+FS_Datapath Datapath_FS(
+	//input
+	.refPxl(FD_datapathOut00), 
+	.selPxl1(FD_datapathOut01),
+	.selPxl2(FD_datapathOut02),
+	.selPxl3(FD_datapathOut03),
+	.selPxl4(FD_datapathOut04),
+	.selPxl5(FD_datapathOut05),
+	.selPxl6(FD_datapathOut06), 
+	.selPxl7(FD_datapathOut07),
+	.selPxl8(FD_datapathOut08),
+	.selPxl9(FD_datapathOut09),
+	.selPxl10(FD_datapathOut10),
+	.selPxl11(FD_datapathOut11),
+	.selPxl12(FD_datapathOut12), 
+	.selPxl13(FD_datapathOut13),
+	.selPxl14(FD_datapathOut14),
+	.selPxl15(FD_datapathOut15),
+	.selPxl16(FD_datapathOut16), 
+	.Threshold(FD_Threshold),
+	.isCorner(FD_isCorner),
+	.refAddr(FD_refAddr),
+	//output
+	.scoreVal(FS_scoreVal),
+	.outrefPxl(FS_refPixelOut), 
+	.outrefAddr(FS_refAddrOut));
 //-----------------------------------------------------------------
 
 //-----------------------------------------------------------------
@@ -551,6 +582,16 @@ CustomRAM RAM_custom(
 	.wraddress ( vmem_addr ),
 	.wren ( vmem_wren ),
 	.q( FD_memVal ) );
+	
+//Score RAM
+ScoreRAM RAM_score(
+	.clock( Sys_clk ),
+	.data( FS_scoreVal ),
+	.rdaddress( NMS_memAddr ),
+	.rden( FS_readEn ),
+	.wraddress( FS_refAddrOut ),
+	.wren( FS_writeEn ),
+	.q( NMS_memVal ));
 //-----------------------------------------------------------------
 
 //-----------------------------------------------------------------
