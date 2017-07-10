@@ -176,7 +176,14 @@ wire [ 4:0] R = (R_int[20]) ? 5'b0 : (R_int[19:18] == 2'b0) ? R_int[17:13] : 5'b
 wire [ 5:0] G = (G_int[20]) ? 6'b0 : (G_int[19:18] == 2'b0) ? G_int[17:12] : 6'b111111;
 wire [ 4:0] B = (B_int[20]) ? 5'b0 : (B_int[19:18] == 2'b0) ? B_int[17:13] : 5'b11111;	  
 
-wire [15:0] DecVData = {R,G,B};
+//y = (0.299 * R) + (0.587*G) + (0.114*B)
+wire [4:0]	GrayScale = (R>>2) + (G>>2) + (B>>3);
+//wire [4:0]	GrayScale = ((3*R) + (6*G) + B) / 10;
+wire [4:0]	Gray_R = GrayScale;
+wire [5:0]	Gray_G = {GrayScale,1'b0};
+wire [4:0]	Gray_B = GrayScale;
+wire [15:0]	DecVData = {Gray_R,Gray_G,Gray_B};
+//wire [15:0] DecVData = {R,G,B};
 /////////////////////////////////////////////////////////////////////////////
 
 
@@ -366,8 +373,13 @@ assign vmem_rden     = mcs5; 		// SRAM Read  //~mcs5;
 //assign mem_bex[1]  = ~(mcs1 | mcs3 | mcs5) ;	// 16bit MSB Byte enable
 //assign mem_bex[0]  = ~(mcs1 | mcs3 | mcs5) ;	// 16bit LSB Byte enable
 
+wire FD_isCorner;
+wire NMS_isCorner;
+wire	[15:0]	row;
 
-assign AMAmem_data  = ( ~AMAmem_csx ) ? vmem_q : 16'bZ;
+assign row = (vmem_addr  / 16'b0000000010110100);
+
+assign AMAmem_data  = ( ~AMAmem_csx ) ? ((row > 4) ? (FD_isCorner ? 16'b0000011111100000 : (NMS_isCorner ? 16'b1111100000000000 : vmem_q)) : vmem_q) : 16'bZ;
 
 assign vmem_data    = ( mcs1 | mcs2 ) ? vdata : 16'bZ ;
 //assign vmem_data    = ( (~mcs0 & mcs1) | (~mcs0 & mcs2) ) ? vdata : 16'bZ ;
@@ -375,6 +387,264 @@ assign vmem_data    = ( mcs1 | mcs2 ) ? vdata : 16'bZ ;
 assign vmem_addr     = ( mcs1 | mcs2 ) ? vadr : {A_addr, AMAmem_adr};	// 16bit SRAM address
 //assign vmem_addr     = ( (~mcs0 & mcs1) | (~mcs0 & mcs2) ) ? vadr : AMAmem_adr;
 
+//-----------------------------------------------------------------
+//FAST
+wire	[15:0]	FD_refAddr;
+wire	[4:0]		FD_regAddr;
+wire	[4:0]		FD_calAddr;
+wire				FD_readEn;
+wire	[15:0]	FD_memAddr;
+wire	[15:0]	FD_memVal;
+wire				FS_writeEn;
+wire				FS_readEn;
+wire	[15:0]	NMS_refAddr;
+wire	[3:0]		NMS_calAddr;
+wire	[3:0]		NMS_regAddr;
+wire				NMS_readEn;
+wire	[15:0]	NMS_memAddr;
+wire	[15:0]	NMS_memVal;
+
+reg	nRESET;
+
+always @ ( vmem_rden )
+		if( vmem_rden )
+			nRESET = 1'b1;
+		else
+			nRESET = 1'b0;
+
+FAST_Controller Controller(
+	.clock( Sys_clk ),
+	.input_addr( vmem_addr ),
+	.nRESET( nRESET ),
+	.FD_refAddr( FD_refAddr ),
+	.FD_calAddr( FD_calAddr ),
+	.FD_regAddr( FD_regAddr ),
+	.FD_readEn( FD_readEn ),
+	.FAST_En( vmem_rden ),
+	.FS_writeEn( FS_writeEn ),
+	.FS_readEn( FS_readEn ),
+	.NMS_refAddr( NMS_refAddr ),
+	.NMS_calAddr( NMS_calAddr ),
+	.NMS_regAddr( NMS_regAddr ),
+	.NMS_readEn( NMS_readEn ));
+
+FD_AddrCal AddrCal_FD(
+	.refAddr( FD_refAddr ), 
+	.regAddr( FD_calAddr ), 
+	.srmAddr( FD_memAddr ));
+
+wire  [7:0] FD_regOut00;
+wire  [7:0] FD_regOut01;
+wire  [7:0] FD_regOut02;
+wire  [7:0] FD_regOut03;
+wire  [7:0] FD_regOut04;
+wire  [7:0] FD_regOut05;
+wire  [7:0] FD_regOut06;
+wire  [7:0] FD_regOut07;
+wire  [7:0] FD_regOut08;
+wire  [7:0] FD_regOut09;
+wire  [7:0] FD_regOut10;
+wire  [7:0] FD_regOut11;
+wire  [7:0] FD_regOut12;
+wire  [7:0] FD_regOut13;
+wire  [7:0] FD_regOut14;
+wire  [7:0] FD_regOut15;
+wire  [7:0] FD_regOut16;
+wire  [7:0] FD_Threshold;
+wire	[7:0]	FD_regData = {FD_memVal[10:5],3'b000};
+
+FD_Register Register_FD(
+	//input
+	.clk(Sys_clk),
+	.nRESET(nRESET),
+	.readEn(FD_readEn),
+	.RegAddr(FD_regAddr),
+	.ReadData(FD_regData),
+	//output
+	.Refpixel(FD_regOut00),
+	.Selpixel_0(FD_regOut01),
+	.Selpixel_1(FD_regOut02),
+	.Selpixel_2(FD_regOut03), 
+	.Selpixel_3(FD_regOut04),
+	.Selpixel_4(FD_regOut05),
+	.Selpixel_5(FD_regOut06),
+	.Selpixel_6(FD_regOut07),
+	.Selpixel_7(FD_regOut08),
+	.Selpixel_8(FD_regOut09),
+	.Selpixel_9(FD_regOut10),
+	.Selpixel_10(FD_regOut11),
+	.Selpixel_11(FD_regOut12),
+	.Selpixel_12(FD_regOut13),
+	.Selpixel_13(FD_regOut14),
+	.Selpixel_14(FD_regOut15),
+	.Selpixel_15(FD_regOut16),
+	.Threhol(FD_Threshold));
+
+wire  [7:0] FD_datapathOut00;
+wire  [7:0] FD_datapathOut01;
+wire  [7:0] FD_datapathOut02;
+wire  [7:0] FD_datapathOut03;
+wire  [7:0] FD_datapathOut04;
+wire  [7:0] FD_datapathOut05;
+wire  [7:0] FD_datapathOut06;
+wire  [7:0] FD_datapathOut07;
+wire  [7:0] FD_datapathOut08;
+wire  [7:0] FD_datapathOut09;
+wire  [7:0] FD_datapathOut10;
+wire  [7:0] FD_datapathOut11;
+wire  [7:0] FD_datapathOut12;
+wire  [7:0] FD_datapathOut13;
+wire  [7:0] FD_datapathOut14;
+wire  [7:0] FD_datapathOut15;
+wire  [7:0] FD_datapathOut16;
+wire	FD_dataPathThreshold;
+
+
+FD_Datapath Datapath_FD(
+	//input
+  .refPxl(FD_regOut00),
+	.selPxl1(FD_regOut01),
+	.selPxl2(FD_regOut02),
+	.selPxl3(FD_regOut03),
+	.selPxl4(FD_regOut04), 
+	.selPxl5(FD_regOut05),
+	.selPxl6(FD_regOut06),
+	.selPxl7(FD_regOut07),
+	.selPxl8(FD_regOut08),
+	.selPxl9(FD_regOut09), 
+	.selPxl10(FD_regOut10),
+	.selPxl11(FD_regOut11),
+	.selPxl12(FD_regOut12),
+	.selPxl13(FD_regOut13),
+	.selPxl14(FD_regOut14), 
+	.selPxl15(FD_regOut15),
+	.selPxl16(FD_regOut16),
+	.Threshold(FD_Threshold),
+	.FD_readEn(FD_readEn), 
+  //output
+	.outrefPxl(FD_datapathOut00),
+	.outPxl1(FD_datapathOut01),
+	.outPxl2(FD_datapathOut02),
+	.outPxl3(FD_datapathOut03),
+	.outPxl4(FD_datapathOut04), 
+	.outPxl5(FD_datapathOut05),
+	.outPxl6(FD_datapathOut06),
+	.outPxl7(FD_datapathOut07),
+	.outPxl8(FD_datapathOut08),
+	.outPxl9(FD_datapathOut09), 
+	.outPxl10(FD_datapathOut10),
+	.outPxl11(FD_datapathOut11),
+	.outPxl12(FD_datapathOut12),
+	.outPxl13(FD_datapathOut13),
+	.outPxl14(FD_datapathOut14), 
+	.outPxl15(FD_datapathOut15),
+	.outPxl16(FD_datapathOut16),
+	.outThreshold(FD_dataPathThreshold), 
+	.isCorner(FD_isCorner));
+	
+wire [7:0]	FS_refPixelOut;
+wire [11:0]	FS_scoreVal;
+wire [14:0]	FS_refAddrOut;
+
+FS_Datapath Datapath_FS(
+	//input
+	.refPxl(FD_datapathOut00), 
+	.selPxl1(FD_datapathOut01),
+	.selPxl2(FD_datapathOut02),
+	.selPxl3(FD_datapathOut03),
+	.selPxl4(FD_datapathOut04),
+	.selPxl5(FD_datapathOut05),
+	.selPxl6(FD_datapathOut06), 
+	.selPxl7(FD_datapathOut07),
+	.selPxl8(FD_datapathOut08),
+	.selPxl9(FD_datapathOut09),
+	.selPxl10(FD_datapathOut10),
+	.selPxl11(FD_datapathOut11),
+	.selPxl12(FD_datapathOut12), 
+	.selPxl13(FD_datapathOut13),
+	.selPxl14(FD_datapathOut14),
+	.selPxl15(FD_datapathOut15),
+	.selPxl16(FD_datapathOut16), 
+	.Threshold(FD_Threshold),
+	.isCorner(FD_isCorner),
+	.refAddr(FD_refAddr),
+	//output
+	.scoreVal(FS_scoreVal),
+	.outrefPxl(FS_refPixelOut), 
+	.outrefAddr(FS_refAddrOut));
+
+NMS_AddrCal AddrCal_NMS(
+	//input
+	.refAddr(NMS_refAddr),
+	.regAddr(NMS_calAddr), 
+						 
+	//output
+	.srmAddr(NMS_memAddr));
+
+wire	[11:0]	NMS_regOut00;
+wire	[11:0]	NMS_regOut01;
+wire	[11:0]	NMS_regOut02;
+wire	[11:0]	NMS_regOut03;
+wire	[11:0]	NMS_regOut04;
+wire	[11:0]	NMS_regOut05;
+wire	[11:0]	NMS_regOut06;
+wire	[11:0]	NMS_regOut07;
+wire	[11:0]	NMS_regOut08;
+
+NMS_Register Register_NMS(
+	//input
+	.clk(Sys_clk),
+	.nRESET(nRESET),
+	.regAddr(NMS_regAddr),
+	.readEn(NMS_readEn),
+	.scoreData(NMS_memVal),
+	//output
+	.nighScore0(NMS_regOut01),
+	.nighScore1(NMS_regOut02),
+	.nighScore2(NMS_regOut03),
+	.nighScore3(NMS_regOut04),
+	.nighScore4(NMS_regOut05),
+	.nighScore5(NMS_regOut06),
+	.nighScore6(NMS_regOut07),
+	.nighScore7(NMS_regOut08),
+	.refScore(NMS_regOut00));
+
+NMS_Datapath Datapath_NMS(
+	//input
+	.refPxl(FS_refPixelOut),
+	.nighScore0(NMS_regOut01),
+	.nighScore1(NMS_regOut02),
+	.nighScore2(NMS_regOut03),
+	.nighScore3(NMS_regOut04),
+	.nighScore4(NMS_regOut05), 
+	.nighScore5(NMS_regOut06), 
+	.nighScore6(NMS_regOut07), 
+	.nighScore7(NMS_regOut08),
+	.refScore(NMS_regOut00),		  
+	//output
+	.NMS_isCorner(NMS_isCorner));
+//-----------------------------------------------------------------
+
+//-----------------------------------------------------------------
+//Coustom RAM
+CustomRAM RAM_custom(
+	.clock ( Sys_clk ),
+	.data ( vmem_data ),
+	.rdaddress ( FD_memAddr ),
+	.wraddress ( vmem_addr ),
+	.wren ( vmem_wren ),
+	.q( FD_memVal ) );
+	
+//Score RAM
+ScoreRAM RAM_score(
+	.clock( Sys_clk ),
+	.data( FS_scoreVal ),
+	.rdaddress( NMS_memAddr ),
+	.rden( FS_readEn ),
+	.wraddress( FS_refAddrOut ),
+	.wren( FS_writeEn ),
+	.q( NMS_memVal ));
+//-----------------------------------------------------------------
 
 //-----------------------------------------------------------------
 // FPGA waitx signal generation
