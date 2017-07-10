@@ -1,0 +1,20 @@
+
+State Machine - |FPGA_Processing|FAST_Controller:Controller|curState
+Name curState.01111 curState.01110 curState.01101 curState.01100 curState.01011 curState.01010 curState.01001 curState.01000 curState.00111 curState.00110 curState.00101 curState.00100 curState.00011 curState.00010 curState.00001 curState.00000 curState.10000 
+curState.00000 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+curState.00001 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 0 
+curState.00010 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 1 0 
+curState.00011 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 1 0 
+curState.00100 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 1 0 
+curState.00101 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 1 0 
+curState.00110 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 1 0 
+curState.00111 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 1 0 
+curState.01000 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 1 0 
+curState.01001 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 1 0 
+curState.01010 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 1 0 
+curState.01011 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 1 0 
+curState.01100 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 1 0 
+curState.01101 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 1 0 
+curState.01110 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 
+curState.01111 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 
+curState.10000 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 

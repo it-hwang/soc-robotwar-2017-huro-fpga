@@ -1,5 +1,5 @@
 Analysis & Synthesis report for SoC_Brain
-Mon Jul 10 20:49:57 2017
+Mon Jul 10 21:07:45 2017
 Quartus II 64-Bit Version 13.1.0 Build 162 10/23/2013 SJ Web Edition
 
 
@@ -16,30 +16,39 @@ Quartus II 64-Bit Version 13.1.0 Build 162 10/23/2013 SJ Web Edition
   8. Analysis & Synthesis RAM Summary
   9. Analysis & Synthesis DSP Block Usage Summary
  10. Analysis & Synthesis IP Cores Summary
- 11. Registers Removed During Synthesis
- 12. Removed Registers Triggering Further Register Optimizations
- 13. General Register Statistics
- 14. Inverted Register Statistics
- 15. Multiplexer Restructuring Statistics (Restructuring Performed)
- 16. Source assignments for RAM:RAM_inst|altsyncram:altsyncram_component|altsyncram_59g1:auto_generated
- 17. Parameter Settings for User Entity Instance: Top-level Entity: |FPGA_Processing
- 18. Parameter Settings for User Entity Instance: pll:pll_inst|altpll:altpll_component
- 19. Parameter Settings for User Entity Instance: RAM:RAM_inst|altsyncram:altsyncram_component
- 20. Parameter Settings for Inferred Entity Instance: sld_signaltap:auto_signaltap_0
- 21. Parameter Settings for Inferred Entity Instance: lpm_mult:Mult5
- 22. Parameter Settings for Inferred Entity Instance: lpm_mult:Mult0
- 23. Parameter Settings for Inferred Entity Instance: lpm_mult:Mult9
- 24. Parameter Settings for Inferred Entity Instance: lpm_mult:Mult6
- 25. Parameter Settings for Inferred Entity Instance: lpm_mult:Mult8
- 26. Parameter Settings for Inferred Entity Instance: lpm_mult:Mult7
- 27. altpll Parameter Settings by Entity Instance
- 28. altsyncram Parameter Settings by Entity Instance
- 29. lpm_mult Parameter Settings by Entity Instance
- 30. SignalTap II Logic Analyzer Settings
- 31. Elapsed Time Per Partition
- 32. Connections to In-System Debugging Instance "auto_signaltap_0"
- 33. Analysis & Synthesis Messages
- 34. Analysis & Synthesis Suppressed Messages
+ 11. State Machine - |FPGA_Processing|FAST_Controller:Controller|curState
+ 12. Registers Removed During Synthesis
+ 13. Removed Registers Triggering Further Register Optimizations
+ 14. General Register Statistics
+ 15. Inverted Register Statistics
+ 16. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 17. Source assignments for RAM:RAM_inst|altsyncram:altsyncram_component|altsyncram_59g1:auto_generated
+ 18. Source assignments for CustomRAM:RAM_custom|altsyncram:altsyncram_component|altsyncram_isn1:auto_generated
+ 19. Parameter Settings for User Entity Instance: Top-level Entity: |FPGA_Processing
+ 20. Parameter Settings for User Entity Instance: pll:pll_inst|altpll:altpll_component
+ 21. Parameter Settings for User Entity Instance: RAM:RAM_inst|altsyncram:altsyncram_component
+ 22. Parameter Settings for User Entity Instance: CustomRAM:RAM_custom|altsyncram:altsyncram_component
+ 23. Parameter Settings for Inferred Entity Instance: sld_signaltap:auto_signaltap_0
+ 24. Parameter Settings for Inferred Entity Instance: lpm_divide:Div0
+ 25. Parameter Settings for Inferred Entity Instance: lpm_mult:Mult5
+ 26. Parameter Settings for Inferred Entity Instance: lpm_mult:Mult0
+ 27. Parameter Settings for Inferred Entity Instance: lpm_mult:Mult9
+ 28. Parameter Settings for Inferred Entity Instance: lpm_mult:Mult6
+ 29. Parameter Settings for Inferred Entity Instance: lpm_mult:Mult8
+ 30. Parameter Settings for Inferred Entity Instance: lpm_mult:Mult7
+ 31. altpll Parameter Settings by Entity Instance
+ 32. altsyncram Parameter Settings by Entity Instance
+ 33. lpm_mult Parameter Settings by Entity Instance
+ 34. Port Connectivity Checks: "CustomRAM:RAM_custom"
+ 35. Port Connectivity Checks: "FD_Datapath:Datapath_FD"
+ 36. Port Connectivity Checks: "FD_Register:Register_FD"
+ 37. Port Connectivity Checks: "FD_AddrCal:AddrCal_FD"
+ 38. Port Connectivity Checks: "FAST_Controller:Controller"
+ 39. SignalTap II Logic Analyzer Settings
+ 40. Elapsed Time Per Partition
+ 41. Connections to In-System Debugging Instance "auto_signaltap_0"
+ 42. Analysis & Synthesis Messages
+ 43. Analysis & Synthesis Suppressed Messages
 
 
 
@@ -65,18 +74,18 @@ applicable agreement for further details.
 +---------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                    ;
 +------------------------------------+--------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Mon Jul 10 20:49:57 2017      ;
+; Analysis & Synthesis Status        ; Successful - Mon Jul 10 21:07:45 2017      ;
 ; Quartus II 64-Bit Version          ; 13.1.0 Build 162 10/23/2013 SJ Web Edition ;
 ; Revision Name                      ; SoC_Brain                                  ;
 ; Top-level Entity Name              ; FPGA_Processing                            ;
 ; Family                             ; Cyclone IV E                               ;
-; Total logic elements               ; 1,083                                      ;
-;     Total combinational functions  ; 785                                        ;
-;     Dedicated logic registers      ; 702                                        ;
-; Total registers                    ; 702                                        ;
+; Total logic elements               ; 2,012                                      ;
+;     Total combinational functions  ; 1,618                                      ;
+;     Dedicated logic registers      ; 808                                        ;
+; Total registers                    ; 808                                        ;
 ; Total pins                         ; 60                                         ;
 ; Total virtual pins                 ; 0                                          ;
-; Total memory bits                  ; 1,073,152                                  ;
+; Total memory bits                  ; 1,236,992                                  ;
 ; Embedded Multiplier 9-bit elements ; 19                                         ;
 ; Total PLLs                         ; 1                                          ;
 +------------------------------------+--------------------------------------------+
@@ -191,6 +200,10 @@ applicable agreement for further details.
 +----------------------------------+-----------------+------------------------------+-----------------------------------------------------------------------------+---------+
 ; File Name with User-Entered Path ; Used in Netlist ; File Type                    ; File Name with Absolute Path                                                ; Library ;
 +----------------------------------+-----------------+------------------------------+-----------------------------------------------------------------------------+---------+
+; FD_Register.v                    ; yes             ; User Verilog HDL File        ; D:/Git workspace/brainboard-fpga/FD_Register.v                              ;         ;
+; FD_Datapath.v                    ; yes             ; User Verilog HDL File        ; D:/Git workspace/brainboard-fpga/FD_Datapath.v                              ;         ;
+; FD_AddrCal.v                     ; yes             ; User Verilog HDL File        ; D:/Git workspace/brainboard-fpga/FD_AddrCal.v                               ;         ;
+; CustomRAM.v                      ; yes             ; User Wizard-Generated File   ; D:/Git workspace/brainboard-fpga/CustomRAM.v                                ;         ;
 ; RAM.v                            ; yes             ; User Wizard-Generated File   ; D:/Git workspace/brainboard-fpga/RAM.v                                      ;         ;
 ; FPGA_Processing.v                ; yes             ; User Verilog HDL File        ; D:/Git workspace/brainboard-fpga/FPGA_Processing.v                          ;         ;
 ; pll.v                            ; yes             ; User Wizard-Generated File   ; D:/Git workspace/brainboard-fpga/pll.v                                      ;         ;
@@ -211,6 +224,9 @@ applicable agreement for further details.
 ; db/altsyncram_59g1.tdf           ; yes             ; Auto-Generated Megafunction  ; D:/Git workspace/brainboard-fpga/db/altsyncram_59g1.tdf                     ;         ;
 ; db/decode_rsa.tdf                ; yes             ; Auto-Generated Megafunction  ; D:/Git workspace/brainboard-fpga/db/decode_rsa.tdf                          ;         ;
 ; db/mux_qob.tdf                   ; yes             ; Auto-Generated Megafunction  ; D:/Git workspace/brainboard-fpga/db/mux_qob.tdf                             ;         ;
+; fast_controller.v                ; yes             ; Auto-Found Verilog HDL File  ; D:/Git workspace/brainboard-fpga/fast_controller.v                          ;         ;
+; db/altsyncram_isn1.tdf           ; yes             ; Auto-Generated Megafunction  ; D:/Git workspace/brainboard-fpga/db/altsyncram_isn1.tdf                     ;         ;
+; db/decode_k8a.tdf                ; yes             ; Auto-Generated Megafunction  ; D:/Git workspace/brainboard-fpga/db/decode_k8a.tdf                          ;         ;
 ; sld_signaltap.vhd                ; yes             ; Megafunction                 ; c:/altera/13.1/quartus/libraries/megafunctions/sld_signaltap.vhd            ;         ;
 ; sld_signaltap_impl.vhd           ; yes             ; Encrypted Megafunction       ; c:/altera/13.1/quartus/libraries/megafunctions/sld_signaltap_impl.vhd       ;         ;
 ; sld_ela_control.vhd              ; yes             ; Encrypted Megafunction       ; c:/altera/13.1/quartus/libraries/megafunctions/sld_ela_control.vhd          ;         ;
@@ -250,6 +266,14 @@ applicable agreement for further details.
 ; sld_rom_sr.vhd                   ; yes             ; Encrypted Megafunction       ; c:/altera/13.1/quartus/libraries/megafunctions/sld_rom_sr.vhd               ;         ;
 ; sld_hub.vhd                      ; yes             ; Encrypted Megafunction       ; c:/altera/13.1/quartus/libraries/megafunctions/sld_hub.vhd                  ;         ;
 ; sld_jtag_hub.vhd                 ; yes             ; Encrypted Megafunction       ; c:/altera/13.1/quartus/libraries/megafunctions/sld_jtag_hub.vhd             ;         ;
+; lpm_divide.tdf                   ; yes             ; Megafunction                 ; c:/altera/13.1/quartus/libraries/megafunctions/lpm_divide.tdf               ;         ;
+; abs_divider.inc                  ; yes             ; Megafunction                 ; c:/altera/13.1/quartus/libraries/megafunctions/abs_divider.inc              ;         ;
+; sign_div_unsign.inc              ; yes             ; Megafunction                 ; c:/altera/13.1/quartus/libraries/megafunctions/sign_div_unsign.inc          ;         ;
+; db/lpm_divide_6jm.tdf            ; yes             ; Auto-Generated Megafunction  ; D:/Git workspace/brainboard-fpga/db/lpm_divide_6jm.tdf                      ;         ;
+; db/sign_div_unsign_ulh.tdf       ; yes             ; Auto-Generated Megafunction  ; D:/Git workspace/brainboard-fpga/db/sign_div_unsign_ulh.tdf                 ;         ;
+; db/alt_u_div_g7f.tdf             ; yes             ; Auto-Generated Megafunction  ; D:/Git workspace/brainboard-fpga/db/alt_u_div_g7f.tdf                       ;         ;
+; db/add_sub_7pc.tdf               ; yes             ; Auto-Generated Megafunction  ; D:/Git workspace/brainboard-fpga/db/add_sub_7pc.tdf                         ;         ;
+; db/add_sub_8pc.tdf               ; yes             ; Auto-Generated Megafunction  ; D:/Git workspace/brainboard-fpga/db/add_sub_8pc.tdf                         ;         ;
 ; lpm_mult.tdf                     ; yes             ; Megafunction                 ; c:/altera/13.1/quartus/libraries/megafunctions/lpm_mult.tdf                 ;         ;
 ; multcore.inc                     ; yes             ; Megafunction                 ; c:/altera/13.1/quartus/libraries/megafunctions/multcore.inc                 ;         ;
 ; db/mult_6ft.tdf                  ; yes             ; Auto-Generated Megafunction  ; D:/Git workspace/brainboard-fpga/db/mult_6ft.tdf                            ;         ;
@@ -264,32 +288,32 @@ applicable agreement for further details.
 +---------------------------------------------+--------------------------+
 ; Resource                                    ; Usage                    ;
 +---------------------------------------------+--------------------------+
-; Estimated Total logic elements              ; 1,083                    ;
+; Estimated Total logic elements              ; 2,012                    ;
 ;                                             ;                          ;
-; Total combinational functions               ; 785                      ;
+; Total combinational functions               ; 1618                     ;
 ; Logic element usage by number of LUT inputs ;                          ;
-;     -- 4 input functions                    ; 321                      ;
-;     -- 3 input functions                    ; 255                      ;
-;     -- <=2 input functions                  ; 209                      ;
+;     -- 4 input functions                    ; 721                      ;
+;     -- 3 input functions                    ; 338                      ;
+;     -- <=2 input functions                  ; 559                      ;
 ;                                             ;                          ;
 ; Logic elements by mode                      ;                          ;
-;     -- normal mode                          ; 590                      ;
-;     -- arithmetic mode                      ; 195                      ;
+;     -- normal mode                          ; 1140                     ;
+;     -- arithmetic mode                      ; 478                      ;
 ;                                             ;                          ;
-; Total registers                             ; 702                      ;
-;     -- Dedicated logic registers            ; 702                      ;
+; Total registers                             ; 808                      ;
+;     -- Dedicated logic registers            ; 808                      ;
 ;     -- I/O registers                        ; 0                        ;
 ;                                             ;                          ;
 ; I/O pins                                    ; 60                       ;
-; Total memory bits                           ; 1073152                  ;
+; Total memory bits                           ; 1236992                  ;
 ; Embedded Multiplier 9-bit elements          ; 19                       ;
 ; Total PLLs                                  ; 1                        ;
 ;     -- PLLs                                 ; 1                        ;
 ;                                             ;                          ;
 ; Maximum fan-out node                        ; altera_internal_jtag~TDO ;
 ; Maximum fan-out                             ; 348                      ;
-; Total fan-out                               ; 7486                     ;
-; Average fan-out                             ; 4.19                     ;
+; Total fan-out                               ; 10909                    ;
+; Average fan-out                             ; 3.97                     ;
 +---------------------------------------------+--------------------------+
 
 
@@ -298,13 +322,26 @@ applicable agreement for further details.
 +---------------------------------------------------------------------------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------+
 ; Compilation Hierarchy Node                                                                              ; LC Combinationals ; LC Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name                                                                                                                                                                                                                                                                                                                                  ; Library Name ;
 +---------------------------------------------------------------------------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------+
-; |FPGA_Processing                                                                                        ; 785 (197)         ; 702 (184)    ; 1073152     ; 19           ; 5       ; 7         ; 60   ; 0            ; |FPGA_Processing                                                                                                                                                                                                                                                                                                                                     ; work         ;
-;    |RAM:RAM_inst|                                                                                       ; 97 (0)            ; 8 (0)        ; 1048576     ; 0            ; 0       ; 0         ; 0    ; 0            ; |FPGA_Processing|RAM:RAM_inst                                                                                                                                                                                                                                                                                                                        ; work         ;
-;       |altsyncram:altsyncram_component|                                                                 ; 97 (0)            ; 8 (0)        ; 1048576     ; 0            ; 0       ; 0         ; 0    ; 0            ; |FPGA_Processing|RAM:RAM_inst|altsyncram:altsyncram_component                                                                                                                                                                                                                                                                                        ; work         ;
-;          |altsyncram_59g1:auto_generated|                                                               ; 97 (1)            ; 8 (8)        ; 1048576     ; 0            ; 0       ; 0         ; 0    ; 0            ; |FPGA_Processing|RAM:RAM_inst|altsyncram:altsyncram_component|altsyncram_59g1:auto_generated                                                                                                                                                                                                                                                         ; work         ;
+; |FPGA_Processing                                                                                        ; 1618 (216)        ; 808 (184)    ; 1236992     ; 19           ; 5       ; 7         ; 60   ; 0            ; |FPGA_Processing                                                                                                                                                                                                                                                                                                                                     ; work         ;
+;    |CustomRAM:RAM_custom|                                                                               ; 14 (0)            ; 4 (0)        ; 163840      ; 0            ; 0       ; 0         ; 0    ; 0            ; |FPGA_Processing|CustomRAM:RAM_custom                                                                                                                                                                                                                                                                                                                ; work         ;
+;       |altsyncram:altsyncram_component|                                                                 ; 14 (0)            ; 4 (0)        ; 163840      ; 0            ; 0       ; 0         ; 0    ; 0            ; |FPGA_Processing|CustomRAM:RAM_custom|altsyncram:altsyncram_component                                                                                                                                                                                                                                                                                ; work         ;
+;          |altsyncram_isn1:auto_generated|                                                               ; 14 (0)            ; 4 (4)        ; 163840      ; 0            ; 0       ; 0         ; 0    ; 0            ; |FPGA_Processing|CustomRAM:RAM_custom|altsyncram:altsyncram_component|altsyncram_isn1:auto_generated                                                                                                                                                                                                                                                 ; work         ;
+;             |decode_k8a:rden_decode_b|                                                                  ; 4 (4)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |FPGA_Processing|CustomRAM:RAM_custom|altsyncram:altsyncram_component|altsyncram_isn1:auto_generated|decode_k8a:rden_decode_b                                                                                                                                                                                                                        ; work         ;
+;             |mux_qob:mux3|                                                                              ; 10 (10)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |FPGA_Processing|CustomRAM:RAM_custom|altsyncram:altsyncram_component|altsyncram_isn1:auto_generated|mux_qob:mux3                                                                                                                                                                                                                                    ; work         ;
+;    |FAST_Controller:Controller|                                                                         ; 32 (32)           ; 17 (17)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |FPGA_Processing|FAST_Controller:Controller                                                                                                                                                                                                                                                                                                          ; work         ;
+;    |FD_AddrCal:AddrCal_FD|                                                                              ; 366 (366)         ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |FPGA_Processing|FD_AddrCal:AddrCal_FD                                                                                                                                                                                                                                                                                                               ; work         ;
+;    |FD_Datapath:Datapath_FD|                                                                            ; 191 (191)         ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |FPGA_Processing|FD_Datapath:Datapath_FD                                                                                                                                                                                                                                                                                                             ; work         ;
+;    |FD_Register:Register_FD|                                                                            ; 23 (23)           ; 85 (85)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |FPGA_Processing|FD_Register:Register_FD                                                                                                                                                                                                                                                                                                             ; work         ;
+;    |RAM:RAM_inst|                                                                                       ; 81 (0)            ; 8 (0)        ; 1048576     ; 0            ; 0       ; 0         ; 0    ; 0            ; |FPGA_Processing|RAM:RAM_inst                                                                                                                                                                                                                                                                                                                        ; work         ;
+;       |altsyncram:altsyncram_component|                                                                 ; 81 (0)            ; 8 (0)        ; 1048576     ; 0            ; 0       ; 0         ; 0    ; 0            ; |FPGA_Processing|RAM:RAM_inst|altsyncram:altsyncram_component                                                                                                                                                                                                                                                                                        ; work         ;
+;          |altsyncram_59g1:auto_generated|                                                               ; 81 (1)            ; 8 (8)        ; 1048576     ; 0            ; 0       ; 0         ; 0    ; 0            ; |FPGA_Processing|RAM:RAM_inst|altsyncram:altsyncram_component|altsyncram_59g1:auto_generated                                                                                                                                                                                                                                                         ; work         ;
 ;             |decode_rsa:decode3|                                                                        ; 8 (8)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |FPGA_Processing|RAM:RAM_inst|altsyncram:altsyncram_component|altsyncram_59g1:auto_generated|decode_rsa:decode3                                                                                                                                                                                                                                      ; work         ;
 ;             |decode_rsa:rden_decode|                                                                    ; 8 (8)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |FPGA_Processing|RAM:RAM_inst|altsyncram:altsyncram_component|altsyncram_59g1:auto_generated|decode_rsa:rden_decode                                                                                                                                                                                                                                  ; work         ;
-;             |mux_qob:mux2|                                                                              ; 80 (80)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |FPGA_Processing|RAM:RAM_inst|altsyncram:altsyncram_component|altsyncram_59g1:auto_generated|mux_qob:mux2                                                                                                                                                                                                                                            ; work         ;
+;             |mux_qob:mux2|                                                                              ; 64 (64)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |FPGA_Processing|RAM:RAM_inst|altsyncram:altsyncram_component|altsyncram_59g1:auto_generated|mux_qob:mux2                                                                                                                                                                                                                                            ; work         ;
+;    |lpm_divide:Div0|                                                                                    ; 204 (0)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |FPGA_Processing|lpm_divide:Div0                                                                                                                                                                                                                                                                                                                     ; work         ;
+;       |lpm_divide_6jm:auto_generated|                                                                   ; 204 (0)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |FPGA_Processing|lpm_divide:Div0|lpm_divide_6jm:auto_generated                                                                                                                                                                                                                                                                                       ; work         ;
+;          |sign_div_unsign_ulh:divider|                                                                  ; 204 (0)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |FPGA_Processing|lpm_divide:Div0|lpm_divide_6jm:auto_generated|sign_div_unsign_ulh:divider                                                                                                                                                                                                                                                           ; work         ;
+;             |alt_u_div_g7f:divider|                                                                     ; 204 (204)         ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |FPGA_Processing|lpm_divide:Div0|lpm_divide_6jm:auto_generated|sign_div_unsign_ulh:divider|alt_u_div_g7f:divider                                                                                                                                                                                                                                     ; work         ;
 ;    |lpm_mult:Mult0|                                                                                     ; 3 (0)             ; 0 (0)        ; 0           ; 3            ; 1       ; 1         ; 0    ; 0            ; |FPGA_Processing|lpm_mult:Mult0                                                                                                                                                                                                                                                                                                                      ; work         ;
 ;       |mult_6ft:auto_generated|                                                                         ; 3 (3)             ; 0 (0)        ; 0           ; 3            ; 1       ; 1         ; 0    ; 0            ; |FPGA_Processing|lpm_mult:Mult0|mult_6ft:auto_generated                                                                                                                                                                                                                                                                                              ; work         ;
 ;    |lpm_mult:Mult5|                                                                                     ; 3 (0)             ; 0 (0)        ; 0           ; 3            ; 1       ; 1         ; 0    ; 0            ; |FPGA_Processing|lpm_mult:Mult5                                                                                                                                                                                                                                                                                                                      ; work         ;
@@ -370,6 +407,7 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+------+------------------+--------------+--------------+--------------+--------------+---------+------+
 ; Name                                                                                                                                                                                                  ; Type ; Mode             ; Port A Depth ; Port A Width ; Port B Depth ; Port B Width ; Size    ; MIF  ;
 +-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+------+------------------+--------------+--------------+--------------+--------------+---------+------+
+; CustomRAM:RAM_custom|altsyncram:altsyncram_component|altsyncram_isn1:auto_generated|ALTSYNCRAM                                                                                                        ; AUTO ; Simple Dual Port ; 65536        ; 16           ; 65536        ; 16           ; 1048576 ; None ;
 ; RAM:RAM_inst|altsyncram:altsyncram_component|altsyncram_59g1:auto_generated|ALTSYNCRAM                                                                                                                ; AUTO ; Single Port      ; 65536        ; 16           ; --           ; --           ; 1048576 ; None ;
 ; sld_signaltap:auto_signaltap_0|sld_signaltap_impl:sld_signaltap_body|sld_signaltap_implb:sld_signaltap_body|altsyncram:\stp_non_zero_ram_gen:stp_buffer_ram|altsyncram_0u14:auto_generated|ALTSYNCRAM ; AUTO ; Simple Dual Port ; 8192         ; 3            ; 8192         ; 3            ; 24576   ; None ;
 +-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+------+------------------+--------------+--------------+--------------+--------------+---------+------+
@@ -393,93 +431,162 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 Note: number of Embedded Multiplier Blocks used is only available after a successful fit.
 
 
-+----------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis IP Cores Summary                                                                                                  ;
-+--------+--------------+---------+--------------+--------------+-------------------------------+----------------------------------------+
-; Vendor ; IP Core Name ; Version ; Release Date ; License Type ; Entity Instance               ; IP Include File                        ;
-+--------+--------------+---------+--------------+--------------+-------------------------------+----------------------------------------+
-; Altera ; RAM: 1-PORT  ; N/A     ; N/A          ; N/A          ; |FPGA_Processing|RAM:RAM_inst ; D:/Git workspace/brainboard-fpga/RAM.v ;
-; Altera ; ALTPLL       ; 13.1    ; N/A          ; N/A          ; |FPGA_Processing|pll:pll_inst ; D:/Git workspace/brainboard-fpga/pll.v ;
-+--------+--------------+---------+--------------+--------------+-------------------------------+----------------------------------------+
++------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis IP Cores Summary                                                                                                                ;
++--------+--------------+---------+--------------+--------------+---------------------------------------+----------------------------------------------+
+; Vendor ; IP Core Name ; Version ; Release Date ; License Type ; Entity Instance                       ; IP Include File                              ;
++--------+--------------+---------+--------------+--------------+---------------------------------------+----------------------------------------------+
+; Altera ; RAM: 2-PORT  ; N/A     ; N/A          ; N/A          ; |FPGA_Processing|CustomRAM:RAM_custom ; D:/Git workspace/brainboard-fpga/CustomRAM.v ;
+; Altera ; RAM: 1-PORT  ; N/A     ; N/A          ; N/A          ; |FPGA_Processing|RAM:RAM_inst         ; D:/Git workspace/brainboard-fpga/RAM.v       ;
+; Altera ; ALTPLL       ; 13.1    ; N/A          ; N/A          ; |FPGA_Processing|pll:pll_inst         ; D:/Git workspace/brainboard-fpga/pll.v       ;
++--------+--------------+---------+--------------+--------------+---------------------------------------+----------------------------------------------+
 
 
-+----------------------------------------------------------------------------------+
-; Registers Removed During Synthesis                                               ;
-+-----------------------------------------+----------------------------------------+
-; Register name                           ; Reason for Removal                     ;
-+-----------------------------------------+----------------------------------------+
-; const5[0,1]                             ; Stuck at GND due to stuck port data_in ;
-; vdata[5]                                ; Stuck at GND due to stuck port data_in ;
-; const5[2]                               ; Stuck at VCC due to stuck port data_in ;
-; const5[3..8]                            ; Stuck at GND due to stuck port data_in ;
-; const5[9]                               ; Stuck at VCC due to stuck port data_in ;
-; const4[0,1]                             ; Stuck at GND due to stuck port data_in ;
-; const4[2]                               ; Stuck at VCC due to stuck port data_in ;
-; const4[3,4]                             ; Stuck at GND due to stuck port data_in ;
-; const4[5,6]                             ; Stuck at VCC due to stuck port data_in ;
-; const4[7..9]                            ; Stuck at GND due to stuck port data_in ;
-; const3[0..3]                            ; Stuck at GND due to stuck port data_in ;
-; const3[4]                               ; Stuck at VCC due to stuck port data_in ;
-; const3[5]                               ; Stuck at GND due to stuck port data_in ;
-; const3[6,7]                             ; Stuck at VCC due to stuck port data_in ;
-; const3[8,9]                             ; Stuck at GND due to stuck port data_in ;
-; const2[0..2]                            ; Stuck at GND due to stuck port data_in ;
-; const2[3,4]                             ; Stuck at VCC due to stuck port data_in ;
-; const2[5,6]                             ; Stuck at GND due to stuck port data_in ;
-; const2[7,8]                             ; Stuck at VCC due to stuck port data_in ;
-; const2[9]                               ; Stuck at GND due to stuck port data_in ;
-; const1[0]                               ; Stuck at GND due to stuck port data_in ;
-; const1[1]                               ; Stuck at VCC due to stuck port data_in ;
-; const1[2]                               ; Stuck at GND due to stuck port data_in ;
-; const1[3]                               ; Stuck at VCC due to stuck port data_in ;
-; const1[4]                               ; Stuck at GND due to stuck port data_in ;
-; const1[5]                               ; Stuck at VCC due to stuck port data_in ;
-; const1[6,7]                             ; Stuck at GND due to stuck port data_in ;
-; const1[8]                               ; Stuck at VCC due to stuck port data_in ;
-; const1[9]                               ; Stuck at GND due to stuck port data_in ;
-; vdata[6,11]                             ; Merged with vdata[0]                   ;
-; vdata[1,7]                              ; Merged with vdata[12]                  ;
-; vdata[2,8]                              ; Merged with vdata[13]                  ;
-; vdata[3,9]                              ; Merged with vdata[14]                  ;
-; vdata[4,15]                             ; Merged with vdata[10]                  ;
-; Cr_Data2[7]                             ; Merged with Cr_Data1[7]                ;
-; Cr_Data2[6]                             ; Merged with Cr_Data1[6]                ;
-; Cr_Data2[5]                             ; Merged with Cr_Data1[5]                ;
-; Cr_Data2[4]                             ; Merged with Cr_Data1[4]                ;
-; Cr_Data2[3]                             ; Merged with Cr_Data1[3]                ;
-; Cr_Data2[2]                             ; Merged with Cr_Data1[2]                ;
-; Cr_Data2[1]                             ; Merged with Cr_Data1[1]                ;
-; Cr_Data2[0]                             ; Merged with Cr_Data1[0]                ;
-; Cb_Data2[7]                             ; Merged with Cb_Data1[7]                ;
-; Cb_Data2[6]                             ; Merged with Cb_Data1[6]                ;
-; Cb_Data2[5]                             ; Merged with Cb_Data1[5]                ;
-; Cb_Data2[4]                             ; Merged with Cb_Data1[4]                ;
-; Cb_Data2[3]                             ; Merged with Cb_Data1[3]                ;
-; Cb_Data2[2]                             ; Merged with Cb_Data1[2]                ;
-; Cb_Data2[1]                             ; Merged with Cb_Data1[1]                ;
-; Cb_Data2[0]                             ; Merged with Cb_Data1[0]                ;
-; A_int[0..4]                             ; Stuck at GND due to stuck port data_in ;
-; B1_int[0..5]                            ; Stuck at GND due to stuck port data_in ;
-; B2_int[0..3]                            ; Stuck at GND due to stuck port data_in ;
-; C_int[0..3]                             ; Stuck at GND due to stuck port data_in ;
-; X_int[0..2]                             ; Stuck at GND due to stuck port data_in ;
-; B1_int[6]                               ; Merged with A_int[5]                   ;
-; C_int[6]                                ; Merged with B2_int[6]                  ;
-; C_int[5]                                ; Merged with B2_int[5]                  ;
-; C_int[4]                                ; Merged with B2_int[4]                  ;
-; X_int[3]                                ; Lost fanout                            ;
-; Total Number of Removed Registers = 104 ;                                        ;
-+-----------------------------------------+----------------------------------------+
+Encoding Type:  One-Hot
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; State Machine - |FPGA_Processing|FAST_Controller:Controller|curState                                                                                                                                                                                                                                            ;
++----------------+----------------+----------------+----------------+----------------+----------------+----------------+----------------+----------------+----------------+----------------+----------------+----------------+----------------+----------------+----------------+----------------+----------------+
+; Name           ; curState.01111 ; curState.01110 ; curState.01101 ; curState.01100 ; curState.01011 ; curState.01010 ; curState.01001 ; curState.01000 ; curState.00111 ; curState.00110 ; curState.00101 ; curState.00100 ; curState.00011 ; curState.00010 ; curState.00001 ; curState.00000 ; curState.10000 ;
++----------------+----------------+----------------+----------------+----------------+----------------+----------------+----------------+----------------+----------------+----------------+----------------+----------------+----------------+----------------+----------------+----------------+----------------+
+; curState.00000 ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ;
+; curState.00001 ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 1              ; 1              ; 0              ;
+; curState.00010 ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 1              ; 0              ; 1              ; 0              ;
+; curState.00011 ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 1              ; 0              ; 0              ; 1              ; 0              ;
+; curState.00100 ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 1              ; 0              ; 0              ; 0              ; 1              ; 0              ;
+; curState.00101 ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 1              ; 0              ; 0              ; 0              ; 0              ; 1              ; 0              ;
+; curState.00110 ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 1              ; 0              ; 0              ; 0              ; 0              ; 0              ; 1              ; 0              ;
+; curState.00111 ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 1              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 1              ; 0              ;
+; curState.01000 ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 1              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 1              ; 0              ;
+; curState.01001 ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 1              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 1              ; 0              ;
+; curState.01010 ; 0              ; 0              ; 0              ; 0              ; 0              ; 1              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 1              ; 0              ;
+; curState.01011 ; 0              ; 0              ; 0              ; 0              ; 1              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 1              ; 0              ;
+; curState.01100 ; 0              ; 0              ; 0              ; 1              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 1              ; 0              ;
+; curState.01101 ; 0              ; 0              ; 1              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 1              ; 0              ;
+; curState.01110 ; 0              ; 1              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 1              ; 0              ;
+; curState.01111 ; 1              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 1              ; 0              ;
+; curState.10000 ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 1              ; 1              ;
++----------------+----------------+----------------+----------------+----------------+----------------+----------------+----------------+----------------+----------------+----------------+----------------+----------------+----------------+----------------+----------------+----------------+----------------+
 
 
-+------------------------------------------------------------------------------------+
-; Removed Registers Triggering Further Register Optimizations                        ;
-+---------------+---------------------------+----------------------------------------+
-; Register name ; Reason for Removal        ; Registers Removed due to This Register ;
-+---------------+---------------------------+----------------------------------------+
-; A_int[4]      ; Stuck at GND              ; X_int[3]                               ;
-;               ; due to stuck port data_in ;                                        ;
-+---------------+---------------------------+----------------------------------------+
++---------------------------------------------------------------------------------------------------------------------------------------------------+
+; Registers Removed During Synthesis                                                                                                                ;
++----------------------------------------------------------------------------------------------------------+----------------------------------------+
+; Register name                                                                                            ; Reason for Removal                     ;
++----------------------------------------------------------------------------------------------------------+----------------------------------------+
+; const5[0,1]                                                                                              ; Stuck at GND due to stuck port data_in ;
+; vdata[5]                                                                                                 ; Stuck at GND due to stuck port data_in ;
+; const5[2]                                                                                                ; Stuck at VCC due to stuck port data_in ;
+; const5[3..8]                                                                                             ; Stuck at GND due to stuck port data_in ;
+; const5[9]                                                                                                ; Stuck at VCC due to stuck port data_in ;
+; const4[0,1]                                                                                              ; Stuck at GND due to stuck port data_in ;
+; const4[2]                                                                                                ; Stuck at VCC due to stuck port data_in ;
+; const4[3,4]                                                                                              ; Stuck at GND due to stuck port data_in ;
+; const4[5,6]                                                                                              ; Stuck at VCC due to stuck port data_in ;
+; const4[7..9]                                                                                             ; Stuck at GND due to stuck port data_in ;
+; const3[0..3]                                                                                             ; Stuck at GND due to stuck port data_in ;
+; const3[4]                                                                                                ; Stuck at VCC due to stuck port data_in ;
+; const3[5]                                                                                                ; Stuck at GND due to stuck port data_in ;
+; const3[6,7]                                                                                              ; Stuck at VCC due to stuck port data_in ;
+; const3[8,9]                                                                                              ; Stuck at GND due to stuck port data_in ;
+; const2[0..2]                                                                                             ; Stuck at GND due to stuck port data_in ;
+; const2[3,4]                                                                                              ; Stuck at VCC due to stuck port data_in ;
+; const2[5,6]                                                                                              ; Stuck at GND due to stuck port data_in ;
+; const2[7,8]                                                                                              ; Stuck at VCC due to stuck port data_in ;
+; const2[9]                                                                                                ; Stuck at GND due to stuck port data_in ;
+; const1[0]                                                                                                ; Stuck at GND due to stuck port data_in ;
+; const1[1]                                                                                                ; Stuck at VCC due to stuck port data_in ;
+; const1[2]                                                                                                ; Stuck at GND due to stuck port data_in ;
+; const1[3]                                                                                                ; Stuck at VCC due to stuck port data_in ;
+; const1[4]                                                                                                ; Stuck at GND due to stuck port data_in ;
+; const1[5]                                                                                                ; Stuck at VCC due to stuck port data_in ;
+; const1[6,7]                                                                                              ; Stuck at GND due to stuck port data_in ;
+; const1[8]                                                                                                ; Stuck at VCC due to stuck port data_in ;
+; const1[9]                                                                                                ; Stuck at GND due to stuck port data_in ;
+; CustomRAM:RAM_custom|altsyncram:altsyncram_component|altsyncram_isn1:auto_generated|address_reg_b[2]     ; Stuck at GND due to stuck port data_in ;
+; CustomRAM:RAM_custom|altsyncram:altsyncram_component|altsyncram_isn1:auto_generated|out_address_reg_b[2] ; Stuck at GND due to stuck port data_in ;
+; FD_Register:Register_FD|reg_Selpixel_12[1,2]                                                             ; Stuck at GND due to stuck port data_in ;
+; FD_Register:Register_FD|reg_Selpixel_13[1,2]                                                             ; Stuck at GND due to stuck port data_in ;
+; FD_Register:Register_FD|reg_Refpixel[0]                                                                  ; Stuck at GND due to stuck port data_in ;
+; FD_Register:Register_FD|reg_Selpixel_0[0]                                                                ; Stuck at GND due to stuck port data_in ;
+; FD_Register:Register_FD|reg_Selpixel_1[0]                                                                ; Stuck at GND due to stuck port data_in ;
+; FD_Register:Register_FD|reg_Selpixel_14[2]                                                               ; Stuck at GND due to stuck port data_in ;
+; FD_Register:Register_FD|reg_Selpixel_2[0]                                                                ; Stuck at GND due to stuck port data_in ;
+; FD_Register:Register_FD|reg_Selpixel_3[0]                                                                ; Stuck at GND due to stuck port data_in ;
+; FD_Register:Register_FD|reg_Selpixel_14[1]                                                               ; Stuck at GND due to stuck port data_in ;
+; FD_Register:Register_FD|reg_Selpixel_4[0]                                                                ; Stuck at GND due to stuck port data_in ;
+; FD_Register:Register_FD|reg_Selpixel_5[0]                                                                ; Stuck at GND due to stuck port data_in ;
+; FD_Register:Register_FD|reg_Selpixel_6[0]                                                                ; Stuck at GND due to stuck port data_in ;
+; FD_Register:Register_FD|reg_Selpixel_7[0]                                                                ; Stuck at GND due to stuck port data_in ;
+; FD_Register:Register_FD|reg_Selpixel_8[0]                                                                ; Stuck at GND due to stuck port data_in ;
+; FD_Register:Register_FD|reg_Selpixel_9[0]                                                                ; Stuck at GND due to stuck port data_in ;
+; FD_Register:Register_FD|reg_Selpixel_10[0]                                                               ; Stuck at GND due to stuck port data_in ;
+; FD_Register:Register_FD|reg_Selpixel_11[0]                                                               ; Stuck at GND due to stuck port data_in ;
+; FD_Register:Register_FD|reg_Selpixel_12[0]                                                               ; Stuck at GND due to stuck port data_in ;
+; FD_Register:Register_FD|reg_Selpixel_13[0]                                                               ; Stuck at GND due to stuck port data_in ;
+; FD_Register:Register_FD|reg_Selpixel_14[0]                                                               ; Stuck at GND due to stuck port data_in ;
+; FD_Register:Register_FD|reg_Selpixel_15[0..2]                                                            ; Stuck at GND due to stuck port data_in ;
+; FD_Register:Register_FD|reg_Selpixel_11[1,2]                                                             ; Stuck at GND due to stuck port data_in ;
+; FD_Register:Register_FD|reg_Selpixel_10[1,2]                                                             ; Stuck at GND due to stuck port data_in ;
+; FD_Register:Register_FD|reg_Selpixel_9[1,2]                                                              ; Stuck at GND due to stuck port data_in ;
+; FD_Register:Register_FD|reg_Selpixel_8[1,2]                                                              ; Stuck at GND due to stuck port data_in ;
+; FD_Register:Register_FD|reg_Selpixel_7[1,2]                                                              ; Stuck at GND due to stuck port data_in ;
+; FD_Register:Register_FD|reg_Selpixel_6[1,2]                                                              ; Stuck at GND due to stuck port data_in ;
+; FD_Register:Register_FD|reg_Selpixel_5[1,2]                                                              ; Stuck at GND due to stuck port data_in ;
+; FD_Register:Register_FD|reg_Selpixel_4[1,2]                                                              ; Stuck at GND due to stuck port data_in ;
+; FD_Register:Register_FD|reg_Selpixel_3[1,2]                                                              ; Stuck at GND due to stuck port data_in ;
+; FD_Register:Register_FD|reg_Selpixel_2[1,2]                                                              ; Stuck at GND due to stuck port data_in ;
+; FD_Register:Register_FD|reg_Selpixel_1[1,2]                                                              ; Stuck at GND due to stuck port data_in ;
+; FD_Register:Register_FD|reg_Selpixel_0[1,2]                                                              ; Stuck at GND due to stuck port data_in ;
+; FD_Register:Register_FD|reg_Refpixel[1,2]                                                                ; Stuck at GND due to stuck port data_in ;
+; vdata[6,11]                                                                                              ; Merged with vdata[0]                   ;
+; vdata[1,7]                                                                                               ; Merged with vdata[12]                  ;
+; vdata[2,8]                                                                                               ; Merged with vdata[13]                  ;
+; vdata[3,9]                                                                                               ; Merged with vdata[14]                  ;
+; vdata[4,15]                                                                                              ; Merged with vdata[10]                  ;
+; Cr_Data2[7]                                                                                              ; Merged with Cr_Data1[7]                ;
+; Cr_Data2[6]                                                                                              ; Merged with Cr_Data1[6]                ;
+; Cr_Data2[5]                                                                                              ; Merged with Cr_Data1[5]                ;
+; Cr_Data2[4]                                                                                              ; Merged with Cr_Data1[4]                ;
+; Cr_Data2[3]                                                                                              ; Merged with Cr_Data1[3]                ;
+; Cr_Data2[2]                                                                                              ; Merged with Cr_Data1[2]                ;
+; Cr_Data2[1]                                                                                              ; Merged with Cr_Data1[1]                ;
+; Cr_Data2[0]                                                                                              ; Merged with Cr_Data1[0]                ;
+; Cb_Data2[7]                                                                                              ; Merged with Cb_Data1[7]                ;
+; Cb_Data2[6]                                                                                              ; Merged with Cb_Data1[6]                ;
+; Cb_Data2[5]                                                                                              ; Merged with Cb_Data1[5]                ;
+; Cb_Data2[4]                                                                                              ; Merged with Cb_Data1[4]                ;
+; Cb_Data2[3]                                                                                              ; Merged with Cb_Data1[3]                ;
+; Cb_Data2[2]                                                                                              ; Merged with Cb_Data1[2]                ;
+; Cb_Data2[1]                                                                                              ; Merged with Cb_Data1[1]                ;
+; Cb_Data2[0]                                                                                              ; Merged with Cb_Data1[0]                ;
+; A_int[0..4]                                                                                              ; Stuck at GND due to stuck port data_in ;
+; B1_int[0..5]                                                                                             ; Stuck at GND due to stuck port data_in ;
+; B2_int[0..3]                                                                                             ; Stuck at GND due to stuck port data_in ;
+; C_int[0..3]                                                                                              ; Stuck at GND due to stuck port data_in ;
+; X_int[0..2]                                                                                              ; Stuck at GND due to stuck port data_in ;
+; B1_int[6]                                                                                                ; Merged with A_int[5]                   ;
+; C_int[6]                                                                                                 ; Merged with B2_int[6]                  ;
+; C_int[5]                                                                                                 ; Merged with B2_int[5]                  ;
+; C_int[4]                                                                                                 ; Merged with B2_int[4]                  ;
+; FAST_Controller:Controller|curState~16                                                                   ; Lost fanout                            ;
+; FAST_Controller:Controller|curState~17                                                                   ; Lost fanout                            ;
+; FAST_Controller:Controller|curState~18                                                                   ; Lost fanout                            ;
+; FAST_Controller:Controller|curState~19                                                                   ; Lost fanout                            ;
+; X_int[3]                                                                                                 ; Lost fanout                            ;
+; Total Number of Removed Registers = 161                                                                  ;                                        ;
++----------------------------------------------------------------------------------------------------------+----------------------------------------+
+
+
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Removed Registers Triggering Further Register Optimizations                                                                                                                                                                                 ;
++------------------------------------------------------------------------------------------------------+---------------------------+----------------------------------------------------------------------------------------------------------+
+; Register name                                                                                        ; Reason for Removal        ; Registers Removed due to This Register                                                                   ;
++------------------------------------------------------------------------------------------------------+---------------------------+----------------------------------------------------------------------------------------------------------+
+; CustomRAM:RAM_custom|altsyncram:altsyncram_component|altsyncram_isn1:auto_generated|address_reg_b[2] ; Stuck at GND              ; CustomRAM:RAM_custom|altsyncram:altsyncram_component|altsyncram_isn1:auto_generated|out_address_reg_b[2] ;
+;                                                                                                      ; due to stuck port data_in ;                                                                                                          ;
+; A_int[4]                                                                                             ; Stuck at GND              ; X_int[3]                                                                                                 ;
+;                                                                                                      ; due to stuck port data_in ;                                                                                                          ;
++------------------------------------------------------------------------------------------------------+---------------------------+----------------------------------------------------------------------------------------------------------+
 
 
 +------------------------------------------------------+
@@ -487,12 +594,12 @@ Note: number of Embedded Multiplier Blocks used is only available after a succes
 +----------------------------------------------+-------+
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
-; Total registers                              ; 702   ;
+; Total registers                              ; 808   ;
 ; Number of registers using Synchronous Clear  ; 59    ;
 ; Number of registers using Synchronous Load   ; 63    ;
-; Number of registers using Asynchronous Clear ; 392   ;
+; Number of registers using Asynchronous Clear ; 409   ;
 ; Number of registers using Asynchronous Load  ; 0     ;
-; Number of registers using Clock Enable       ; 505   ;
+; Number of registers using Clock Enable       ; 590   ;
 ; Number of registers using Preset             ; 0     ;
 +----------------------------------------------+-------+
 
@@ -528,18 +635,27 @@ Note: number of Embedded Multiplier Blocks used is only available after a succes
 +--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------+
 
 
-+------------------------------------------------------------------------------------------------------------------------------------------+
-; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                           ;
-+--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------+
-; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output ;
-+--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------+
-; 3:1                ; 18 bits   ; 36 LEs        ; 18 LEs               ; 18 LEs                 ; Yes        ; |FPGA_Processing|X_int[3]  ;
-; 3:1                ; 15 bits   ; 30 LEs        ; 15 LEs               ; 15 LEs                 ; Yes        ; |FPGA_Processing|vadr[12]  ;
-; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; No         ; |FPGA_Processing|ns        ;
-; 3:1                ; 4 bits    ; 8 LEs         ; 8 LEs                ; 0 LEs                  ; No         ; |FPGA_Processing|G[2]      ;
-; 3:1                ; 3 bits    ; 6 LEs         ; 6 LEs                ; 0 LEs                  ; No         ; |FPGA_Processing|R[4]      ;
-; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |FPGA_Processing|B[3]      ;
-+--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                                                                                                       ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                                                                                             ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+------------------------------------------------------------------------------------------------------------------------+
+; 3:1                ; 18 bits   ; 36 LEs        ; 18 LEs               ; 18 LEs                 ; Yes        ; |FPGA_Processing|X_int[12]                                                                                             ;
+; 3:1                ; 15 bits   ; 30 LEs        ; 15 LEs               ; 15 LEs                 ; Yes        ; |FPGA_Processing|vadr[14]                                                                                              ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; No         ; |FPGA_Processing|ns                                                                                                    ;
+; 3:1                ; 4 bits    ; 8 LEs         ; 8 LEs                ; 0 LEs                  ; No         ; |FPGA_Processing|G[5]                                                                                                  ;
+; 3:1                ; 3 bits    ; 6 LEs         ; 6 LEs                ; 0 LEs                  ; No         ; |FPGA_Processing|R[4]                                                                                                  ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |FPGA_Processing|B[4]                                                                                                  ;
+; 3:1                ; 16 bits   ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; No         ; |FPGA_Processing|AMAmem_data                                                                                           ;
+; 17:1               ; 2 bits    ; 22 LEs        ; 20 LEs               ; 2 LEs                  ; No         ; |FPGA_Processing|FD_AddrCal:AddrCal_FD|srmAddr[4]                                                                      ;
+; 17:1               ; 10 bits   ; 110 LEs       ; 110 LEs              ; 0 LEs                  ; No         ; |FPGA_Processing|FD_AddrCal:AddrCal_FD|srmAddr[14]                                                                     ;
+; 3:1                ; 4 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; Yes        ; |FPGA_Processing|sld_hub:auto_hub|sld_jtag_hub:\jtag_hub_gen:sld_jtag_hub_inst|hub_minor_ver_reg[0]                    ;
+; 4:1                ; 5 bits    ; 10 LEs        ; 5 LEs                ; 5 LEs                  ; Yes        ; |FPGA_Processing|sld_hub:auto_hub|sld_jtag_hub:\jtag_hub_gen:sld_jtag_hub_inst|mixer_addr_reg[4]                       ;
+; 5:1                ; 5 bits    ; 15 LEs        ; 5 LEs                ; 10 LEs                 ; Yes        ; |FPGA_Processing|sld_hub:auto_hub|sld_jtag_hub:\jtag_hub_gen:sld_jtag_hub_inst|sld_rom_sr:hub_info_reg|word_counter[0] ;
+; 6:1                ; 9 bits    ; 36 LEs        ; 9 LEs                ; 27 LEs                 ; Yes        ; |FPGA_Processing|sld_hub:auto_hub|sld_jtag_hub:\jtag_hub_gen:sld_jtag_hub_inst|irsr_reg[2]                             ;
+; 34:1               ; 4 bits    ; 88 LEs        ; 56 LEs               ; 32 LEs                 ; Yes        ; |FPGA_Processing|sld_hub:auto_hub|sld_jtag_hub:\jtag_hub_gen:sld_jtag_hub_inst|design_hash_reg[0]                      ;
+; 20:1               ; 4 bits    ; 52 LEs        ; 32 LEs               ; 20 LEs                 ; Yes        ; |FPGA_Processing|sld_hub:auto_hub|sld_jtag_hub:\jtag_hub_gen:sld_jtag_hub_inst|sld_rom_sr:hub_info_reg|WORD_SR[0]      ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+------------------------------------------------------------------------------------------------------------------------+
 
 
 +----------------------------------------------------------------------------------------------------+
@@ -549,6 +665,15 @@ Note: number of Embedded Multiplier Blocks used is only available after a succes
 +---------------------------------+--------------------+------+--------------------------------------+
 ; OPTIMIZE_POWER_DURING_SYNTHESIS ; NORMAL_COMPILATION ; -    ; -                                    ;
 +---------------------------------+--------------------+------+--------------------------------------+
+
+
++------------------------------------------------------------------------------------------------------------+
+; Source assignments for CustomRAM:RAM_custom|altsyncram:altsyncram_component|altsyncram_isn1:auto_generated ;
++---------------------------------+--------------------+------+----------------------------------------------+
+; Assignment                      ; Value              ; From ; To                                           ;
++---------------------------------+--------------------+------+----------------------------------------------+
+; OPTIMIZE_POWER_DURING_SYNTHESIS ; NORMAL_COMPILATION ; -    ; -                                            ;
++---------------------------------+--------------------+------+----------------------------------------------+
 
 
 +---------------------------------------------------------------------------------+
@@ -1002,6 +1127,67 @@ Note: In order to hide this table in the UI and the text report file, please set
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
 
 
++---------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: CustomRAM:RAM_custom|altsyncram:altsyncram_component ;
++------------------------------------+----------------------+---------------------------------------+
+; Parameter Name                     ; Value                ; Type                                  ;
++------------------------------------+----------------------+---------------------------------------+
+; BYTE_SIZE_BLOCK                    ; 8                    ; Untyped                               ;
+; AUTO_CARRY_CHAINS                  ; ON                   ; AUTO_CARRY                            ;
+; IGNORE_CARRY_BUFFERS               ; OFF                  ; IGNORE_CARRY                          ;
+; AUTO_CASCADE_CHAINS                ; ON                   ; AUTO_CASCADE                          ;
+; IGNORE_CASCADE_BUFFERS             ; OFF                  ; IGNORE_CASCADE                        ;
+; WIDTH_BYTEENA                      ; 1                    ; Untyped                               ;
+; OPERATION_MODE                     ; DUAL_PORT            ; Untyped                               ;
+; WIDTH_A                            ; 16                   ; Signed Integer                        ;
+; WIDTHAD_A                          ; 16                   ; Signed Integer                        ;
+; NUMWORDS_A                         ; 65536                ; Signed Integer                        ;
+; OUTDATA_REG_A                      ; UNREGISTERED         ; Untyped                               ;
+; ADDRESS_ACLR_A                     ; NONE                 ; Untyped                               ;
+; OUTDATA_ACLR_A                     ; NONE                 ; Untyped                               ;
+; WRCONTROL_ACLR_A                   ; NONE                 ; Untyped                               ;
+; INDATA_ACLR_A                      ; NONE                 ; Untyped                               ;
+; BYTEENA_ACLR_A                     ; NONE                 ; Untyped                               ;
+; WIDTH_B                            ; 16                   ; Signed Integer                        ;
+; WIDTHAD_B                          ; 16                   ; Signed Integer                        ;
+; NUMWORDS_B                         ; 65536                ; Signed Integer                        ;
+; INDATA_REG_B                       ; CLOCK1               ; Untyped                               ;
+; WRCONTROL_WRADDRESS_REG_B          ; CLOCK1               ; Untyped                               ;
+; RDCONTROL_REG_B                    ; CLOCK1               ; Untyped                               ;
+; ADDRESS_REG_B                      ; CLOCK0               ; Untyped                               ;
+; OUTDATA_REG_B                      ; CLOCK0               ; Untyped                               ;
+; BYTEENA_REG_B                      ; CLOCK1               ; Untyped                               ;
+; INDATA_ACLR_B                      ; NONE                 ; Untyped                               ;
+; WRCONTROL_ACLR_B                   ; NONE                 ; Untyped                               ;
+; ADDRESS_ACLR_B                     ; NONE                 ; Untyped                               ;
+; OUTDATA_ACLR_B                     ; NONE                 ; Untyped                               ;
+; RDCONTROL_ACLR_B                   ; NONE                 ; Untyped                               ;
+; BYTEENA_ACLR_B                     ; NONE                 ; Untyped                               ;
+; WIDTH_BYTEENA_A                    ; 1                    ; Signed Integer                        ;
+; WIDTH_BYTEENA_B                    ; 1                    ; Untyped                               ;
+; RAM_BLOCK_TYPE                     ; AUTO                 ; Untyped                               ;
+; BYTE_SIZE                          ; 8                    ; Untyped                               ;
+; READ_DURING_WRITE_MODE_MIXED_PORTS ; DONT_CARE            ; Untyped                               ;
+; READ_DURING_WRITE_MODE_PORT_A      ; NEW_DATA_NO_NBE_READ ; Untyped                               ;
+; READ_DURING_WRITE_MODE_PORT_B      ; NEW_DATA_NO_NBE_READ ; Untyped                               ;
+; INIT_FILE                          ; UNUSED               ; Untyped                               ;
+; INIT_FILE_LAYOUT                   ; PORT_A               ; Untyped                               ;
+; MAXIMUM_DEPTH                      ; 0                    ; Untyped                               ;
+; CLOCK_ENABLE_INPUT_A               ; BYPASS               ; Untyped                               ;
+; CLOCK_ENABLE_INPUT_B               ; BYPASS               ; Untyped                               ;
+; CLOCK_ENABLE_OUTPUT_A              ; NORMAL               ; Untyped                               ;
+; CLOCK_ENABLE_OUTPUT_B              ; BYPASS               ; Untyped                               ;
+; CLOCK_ENABLE_CORE_A                ; USE_INPUT_CLKEN      ; Untyped                               ;
+; CLOCK_ENABLE_CORE_B                ; USE_INPUT_CLKEN      ; Untyped                               ;
+; ENABLE_ECC                         ; FALSE                ; Untyped                               ;
+; ECC_PIPELINE_STAGE_ENABLED         ; FALSE                ; Untyped                               ;
+; WIDTH_ECCSTATUS                    ; 3                    ; Untyped                               ;
+; DEVICE_FAMILY                      ; Cyclone IV E         ; Untyped                               ;
+; CBXI_PARAMETER                     ; altsyncram_isn1      ; Untyped                               ;
++------------------------------------+----------------------+---------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
 +---------------------------------------------------------------------------------------------------------+
 ; Parameter Settings for Inferred Entity Instance: sld_signaltap:auto_signaltap_0                         ;
 +-------------------------------------------------+--------------------------------------+----------------+
@@ -1059,6 +1245,29 @@ Note: In order to hide this table in the UI and the text report file, please set
 ; SLD_STORAGE_QUALIFIER_ADVANCED_CONDITION_ENTITY ; basic                                ; String         ;
 ; SLD_STORAGE_QUALIFIER_PIPELINE                  ; 0                                    ; Signed Integer ;
 +-------------------------------------------------+--------------------------------------+----------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: lpm_divide:Div0 ;
++------------------------+----------------+------------------------+
+; Parameter Name         ; Value          ; Type                   ;
++------------------------+----------------+------------------------+
+; LPM_WIDTHN             ; 16             ; Untyped                ;
+; LPM_WIDTHD             ; 8              ; Untyped                ;
+; LPM_NREPRESENTATION    ; UNSIGNED       ; Untyped                ;
+; LPM_DREPRESENTATION    ; UNSIGNED       ; Untyped                ;
+; LPM_PIPELINE           ; 0              ; Untyped                ;
+; LPM_REMAINDERPOSITIVE  ; TRUE           ; Untyped                ;
+; MAXIMIZE_SPEED         ; 5              ; Untyped                ;
+; CBXI_PARAMETER         ; lpm_divide_6jm ; Untyped                ;
+; CARRY_CHAIN            ; MANUAL         ; Untyped                ;
+; OPTIMIZE_FOR_SPEED     ; 5              ; Untyped                ;
+; AUTO_CARRY_CHAINS      ; ON             ; AUTO_CARRY             ;
+; IGNORE_CARRY_BUFFERS   ; OFF            ; IGNORE_CARRY           ;
+; AUTO_CASCADE_CHAINS    ; ON             ; AUTO_CASCADE           ;
+; IGNORE_CASCADE_BUFFERS ; OFF            ; IGNORE_CASCADE         ;
++------------------------+----------------+------------------------+
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
 
 
@@ -1289,24 +1498,35 @@ Note: In order to hide this table in the UI and the text report file, please set
 +-------------------------------+--------------------------------------+
 
 
-+------------------------------------------------------------------------------------------+
-; altsyncram Parameter Settings by Entity Instance                                         ;
-+-------------------------------------------+----------------------------------------------+
-; Name                                      ; Value                                        ;
-+-------------------------------------------+----------------------------------------------+
-; Number of entity instances                ; 1                                            ;
-; Entity Instance                           ; RAM:RAM_inst|altsyncram:altsyncram_component ;
-;     -- OPERATION_MODE                     ; SINGLE_PORT                                  ;
-;     -- WIDTH_A                            ; 16                                           ;
-;     -- NUMWORDS_A                         ; 65536                                        ;
-;     -- OUTDATA_REG_A                      ; CLOCK0                                       ;
-;     -- WIDTH_B                            ; 1                                            ;
-;     -- NUMWORDS_B                         ; 1                                            ;
-;     -- ADDRESS_REG_B                      ; CLOCK1                                       ;
-;     -- OUTDATA_REG_B                      ; UNREGISTERED                                 ;
-;     -- RAM_BLOCK_TYPE                     ; AUTO                                         ;
-;     -- READ_DURING_WRITE_MODE_MIXED_PORTS ; DONT_CARE                                    ;
-+-------------------------------------------+----------------------------------------------+
++--------------------------------------------------------------------------------------------------+
+; altsyncram Parameter Settings by Entity Instance                                                 ;
++-------------------------------------------+------------------------------------------------------+
+; Name                                      ; Value                                                ;
++-------------------------------------------+------------------------------------------------------+
+; Number of entity instances                ; 2                                                    ;
+; Entity Instance                           ; RAM:RAM_inst|altsyncram:altsyncram_component         ;
+;     -- OPERATION_MODE                     ; SINGLE_PORT                                          ;
+;     -- WIDTH_A                            ; 16                                                   ;
+;     -- NUMWORDS_A                         ; 65536                                                ;
+;     -- OUTDATA_REG_A                      ; CLOCK0                                               ;
+;     -- WIDTH_B                            ; 1                                                    ;
+;     -- NUMWORDS_B                         ; 1                                                    ;
+;     -- ADDRESS_REG_B                      ; CLOCK1                                               ;
+;     -- OUTDATA_REG_B                      ; UNREGISTERED                                         ;
+;     -- RAM_BLOCK_TYPE                     ; AUTO                                                 ;
+;     -- READ_DURING_WRITE_MODE_MIXED_PORTS ; DONT_CARE                                            ;
+; Entity Instance                           ; CustomRAM:RAM_custom|altsyncram:altsyncram_component ;
+;     -- OPERATION_MODE                     ; DUAL_PORT                                            ;
+;     -- WIDTH_A                            ; 16                                                   ;
+;     -- NUMWORDS_A                         ; 65536                                                ;
+;     -- OUTDATA_REG_A                      ; UNREGISTERED                                         ;
+;     -- WIDTH_B                            ; 16                                                   ;
+;     -- NUMWORDS_B                         ; 65536                                                ;
+;     -- ADDRESS_REG_B                      ; CLOCK0                                               ;
+;     -- OUTDATA_REG_B                      ; CLOCK0                                               ;
+;     -- RAM_BLOCK_TYPE                     ; AUTO                                                 ;
+;     -- READ_DURING_WRITE_MODE_MIXED_PORTS ; DONT_CARE                                            ;
++-------------------------------------------+------------------------------------------------------+
 
 
 +--------------------------------------------------------+
@@ -1384,6 +1604,77 @@ Note: In order to hide this table in the UI and the text report file, please set
 +---------------------------------------+----------------+
 
 
++---------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "CustomRAM:RAM_custom"                                                                    ;
++-----------+--------+----------+-------------------------------------------------------------------------------------+
+; Port      ; Type   ; Severity ; Details                                                                             ;
++-----------+--------+----------+-------------------------------------------------------------------------------------+
+; q[15..10] ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
+; q[4..0]   ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++-----------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "FD_Datapath:Datapath_FD"                                                                                                                ;
++--------------+--------+----------+---------------------------------------------------------------------------------------------------------------------------------+
+; Port         ; Type   ; Severity ; Details                                                                                                                         ;
++--------------+--------+----------+---------------------------------------------------------------------------------------------------------------------------------+
+; outrefPxl    ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed.                                             ;
+; outPxl1      ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed.                                             ;
+; outPxl2      ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed.                                             ;
+; outPxl3      ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed.                                             ;
+; outPxl4      ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed.                                             ;
+; outPxl5      ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed.                                             ;
+; outPxl6      ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed.                                             ;
+; outPxl7      ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed.                                             ;
+; outPxl8      ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed.                                             ;
+; outPxl9      ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed.                                             ;
+; outPxl10     ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed.                                             ;
+; outPxl11     ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed.                                             ;
+; outPxl12     ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed.                                             ;
+; outPxl13     ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed.                                             ;
+; outPxl14     ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed.                                             ;
+; outPxl15     ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed.                                             ;
+; outPxl16     ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed.                                             ;
+; outThreshold ; Output ; Warning  ; Output or bidir port (8 bits) is wider than the port expression (1 bits) it drives; bit(s) "outThreshold[7..1]" have no fanouts ;
+; outThreshold ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed.                                             ;
++--------------+--------+----------+---------------------------------------------------------------------------------------------------------------------------------+
+
+
++-----------------------------------------------------+
+; Port Connectivity Checks: "FD_Register:Register_FD" ;
++----------------+-------+----------+-----------------+
+; Port           ; Type  ; Severity ; Details         ;
++----------------+-------+----------+-----------------+
+; ReadData[2..0] ; Input ; Info     ; Stuck at GND    ;
++----------------+-------+----------+-----------------+
+
+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "FD_AddrCal:AddrCal_FD"                                                                                                                                                                ;
++---------+--------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port    ; Type   ; Severity ; Details                                                                                                                                                                            ;
++---------+--------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; refAddr ; Input  ; Warning  ; Input port expression (16 bits) is wider than the input port (15 bits) it drives.  The 1 most-significant bit(s) in the expression will be dangling if they have no other fanouts. ;
+; srmAddr ; Output ; Warning  ; Output or bidir port (15 bits) is smaller than the port expression (16 bits) it drives.  The 1 most-significant bit(s) in the port expression will be connected to GND.            ;
++---------+--------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+
+
++--------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "FAST_Controller:Controller"                                                                   ;
++----------------+--------+----------+-------------------------------------------------------------------------------------+
+; Port           ; Type   ; Severity ; Details                                                                             ;
++----------------+--------+----------+-------------------------------------------------------------------------------------+
+; FD_refAddr[15] ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
+; FS_writeEn     ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
+; FS_readEn      ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
+; NMS_refAddr    ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
+; NMS_calAddr    ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
+; NMS_regAddr    ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
+; NMS_readEn     ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++----------------+--------+----------+-------------------------------------------------------------------------------------+
+
+
 +-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 ; SignalTap II Logic Analyzer Settings                                                                                                                                                                                                                                    ;
 +----------------+------------------+---------------------+------------------+--------------+----------+------------------------+----------------------+--------------------+-----------------------------+-----------------+------------------+--------------------------+
@@ -1393,28 +1684,29 @@ Note: In order to hide this table in the UI and the text report file, please set
 +----------------+------------------+---------------------+------------------+--------------+----------+------------------------+----------------------+--------------------+-----------------------------+-----------------+------------------+--------------------------+
 
 
-+-------------------------------+
-; Elapsed Time Per Partition    ;
-+----------------+--------------+
-; Partition Name ; Elapsed Time ;
-+----------------+--------------+
-; Top            ; 00:00:03     ;
-+----------------+--------------+
++---------------------------------+
+; Elapsed Time Per Partition      ;
++------------------+--------------+
+; Partition Name   ; Elapsed Time ;
++------------------+--------------+
+; Top              ; 00:00:10     ;
+; sld_hub:auto_hub ; 00:00:01     ;
++------------------+--------------+
 
 
-+----------------------------------------------------------------------------------------------------------------+
-; Connections to In-System Debugging Instance "auto_signaltap_0"                                                 ;
-+-----------------+---------------+-----------+----------------+-------------------+-------------------+---------+
-; Name            ; Type          ; Status    ; Partition Name ; Netlist Type Used ; Actual Connection ; Details ;
-+-----------------+---------------+-----------+----------------+-------------------+-------------------+---------+
-; A_addr          ; pre-synthesis ; connected ; Top            ; post-synthesis    ; A_addr            ; N/A     ;
-; A_addr          ; pre-synthesis ; connected ; Top            ; post-synthesis    ; A_addr            ; N/A     ;
-; clk_llc         ; pre-synthesis ; connected ; Top            ; post-synthesis    ; clk_llc           ; N/A     ;
-; odd             ; post-fitting  ; connected ; Top            ; post-synthesis    ; odd               ; N/A     ;
-; odd             ; post-fitting  ; connected ; Top            ; post-synthesis    ; odd               ; N/A     ;
-; vmem_addr[15]~1 ; post-fitting  ; connected ; Top            ; post-synthesis    ; vmem_addr[15]~1   ; N/A     ;
-; vmem_addr[15]~1 ; post-fitting  ; connected ; Top            ; post-synthesis    ; vmem_addr[15]~1   ; N/A     ;
-+-----------------+---------------+-----------+----------------+-------------------+-------------------+---------+
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Connections to In-System Debugging Instance "auto_signaltap_0"                                                                                                                                  ;
++-----------------+---------------+-----------+----------------+-------------------+-------------------+------------------------------------------------------------------------------------------+
+; Name            ; Type          ; Status    ; Partition Name ; Netlist Type Used ; Actual Connection ; Details                                                                                  ;
++-----------------+---------------+-----------+----------------+-------------------+-------------------+------------------------------------------------------------------------------------------+
+; A_addr          ; pre-synthesis ; connected ; Top            ; post-synthesis    ; A_addr            ; N/A                                                                                      ;
+; A_addr          ; pre-synthesis ; connected ; Top            ; post-synthesis    ; A_addr            ; N/A                                                                                      ;
+; clk_llc         ; pre-synthesis ; connected ; Top            ; post-synthesis    ; clk_llc           ; N/A                                                                                      ;
+; odd             ; post-fitting  ; connected ; Top            ; post-synthesis    ; odd               ; N/A                                                                                      ;
+; odd             ; post-fitting  ; connected ; Top            ; post-synthesis    ; odd               ; N/A                                                                                      ;
+; vmem_addr[15]~1 ; post-fitting  ; missing   ; Top            ; post-synthesis    ; GND               ; The post-fitting netlist is not being used.  Set the partition's netlist type to source. ;
+; vmem_addr[15]~1 ; post-fitting  ; missing   ; Top            ; post-synthesis    ; GND               ; The post-fitting netlist is not being used.  Set the partition's netlist type to source. ;
++-----------------+---------------+-----------+----------------+-------------------+-------------------+------------------------------------------------------------------------------------------+
 
 
 +-------------------------------+
@@ -1423,9 +1715,15 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus II 64-Bit Analysis & Synthesis
     Info: Version 13.1.0 Build 162 10/23/2013 SJ Web Edition
-    Info: Processing started: Mon Jul 10 20:49:44 2017
+    Info: Processing started: Mon Jul 10 21:07:23 2017
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off SoC_Brain -c SoC_Brain
 Info (20030): Parallel compilation is enabled and will use 2 of the 2 processors detected
+Info (12021): Found 1 design units, including 1 entities, in source file fd_register.v
+    Info (12023): Found entity 1: FD_Register
+Info (12021): Found 1 design units, including 1 entities, in source file fd_datapath.v
+    Info (12023): Found entity 1: FD_Datapath
+Info (12021): Found 1 design units, including 1 entities, in source file fd_addrcal.v
+    Info (12023): Found entity 1: FD_AddrCal
 Info (12021): Found 1 design units, including 1 entities, in source file scoreram.v
     Info (12023): Found entity 1: ScoreRAM
 Info (12021): Found 1 design units, including 1 entities, in source file customram.v
@@ -1450,6 +1748,7 @@ Warning (10230): Verilog HDL assignment warning at FPGA_Processing.v(159): trunc
 Warning (10230): Verilog HDL assignment warning at FPGA_Processing.v(180): truncated value with size 6 to match size of target (5)
 Warning (10235): Verilog HDL Always Construct warning at FPGA_Processing.v(339): variable "vdd" is read inside the Always Construct but isn't in the Always Construct's Event Control
 Warning (10766): Verilog HDL Synthesis Attribute warning at FPGA_Processing.v(339): ignoring full_case attribute on case statement with explicit default case item
+Warning (10230): Verilog HDL assignment warning at FPGA_Processing.v(453): truncated value with size 9 to match size of target (8)
 Info (12128): Elaborating entity "pll" for hierarchy "pll:pll_inst"
 Info (12128): Elaborating entity "altpll" for hierarchy "pll:pll_inst|altpll:altpll_component"
 Info (12130): Elaborated megafunction instantiation "pll:pll_inst|altpll:altpll_component"
@@ -1538,6 +1837,91 @@ Info (12128): Elaborating entity "decode_rsa" for hierarchy "RAM:RAM_inst|altsyn
 Info (12021): Found 1 design units, including 1 entities, in source file db/mux_qob.tdf
     Info (12023): Found entity 1: mux_qob
 Info (12128): Elaborating entity "mux_qob" for hierarchy "RAM:RAM_inst|altsyncram:altsyncram_component|altsyncram_59g1:auto_generated|mux_qob:mux2"
+Warning (12125): Using design file fast_controller.v, which is not specified as a design file for the current project, but contains definitions for 1 design units and 1 entities in project
+    Info (12023): Found entity 1: FAST_Controller
+Info (12128): Elaborating entity "FAST_Controller" for hierarchy "FAST_Controller:Controller"
+Warning (10230): Verilog HDL assignment warning at fast_controller.v(114): truncated value with size 5 to match size of target (4)
+Warning (10230): Verilog HDL assignment warning at fast_controller.v(115): truncated value with size 5 to match size of target (4)
+Warning (10230): Verilog HDL assignment warning at fast_controller.v(128): truncated value with size 5 to match size of target (4)
+Warning (10230): Verilog HDL assignment warning at fast_controller.v(129): truncated value with size 5 to match size of target (4)
+Warning (10235): Verilog HDL Always Construct warning at fast_controller.v(139): variable "row" is read inside the Always Construct but isn't in the Always Construct's Event Control
+Warning (10235): Verilog HDL Always Construct warning at fast_controller.v(139): variable "col" is read inside the Always Construct but isn't in the Always Construct's Event Control
+Warning (10230): Verilog HDL assignment warning at fast_controller.v(145): truncated value with size 5 to match size of target (4)
+Warning (10230): Verilog HDL assignment warning at fast_controller.v(146): truncated value with size 5 to match size of target (4)
+Warning (10230): Verilog HDL assignment warning at fast_controller.v(159): truncated value with size 5 to match size of target (4)
+Warning (10230): Verilog HDL assignment warning at fast_controller.v(160): truncated value with size 5 to match size of target (4)
+Warning (10230): Verilog HDL assignment warning at fast_controller.v(173): truncated value with size 5 to match size of target (4)
+Warning (10230): Verilog HDL assignment warning at fast_controller.v(174): truncated value with size 5 to match size of target (4)
+Warning (10230): Verilog HDL assignment warning at fast_controller.v(188): truncated value with size 5 to match size of target (4)
+Warning (10230): Verilog HDL assignment warning at fast_controller.v(189): truncated value with size 5 to match size of target (4)
+Warning (10230): Verilog HDL assignment warning at fast_controller.v(203): truncated value with size 5 to match size of target (4)
+Warning (10230): Verilog HDL assignment warning at fast_controller.v(204): truncated value with size 5 to match size of target (4)
+Warning (10230): Verilog HDL assignment warning at fast_controller.v(218): truncated value with size 5 to match size of target (4)
+Warning (10230): Verilog HDL assignment warning at fast_controller.v(219): truncated value with size 5 to match size of target (4)
+Warning (10230): Verilog HDL assignment warning at fast_controller.v(233): truncated value with size 5 to match size of target (4)
+Warning (10230): Verilog HDL assignment warning at fast_controller.v(234): truncated value with size 5 to match size of target (4)
+Warning (10230): Verilog HDL assignment warning at fast_controller.v(248): truncated value with size 5 to match size of target (4)
+Warning (10230): Verilog HDL assignment warning at fast_controller.v(249): truncated value with size 5 to match size of target (4)
+Warning (10230): Verilog HDL assignment warning at fast_controller.v(263): truncated value with size 5 to match size of target (4)
+Warning (10230): Verilog HDL assignment warning at fast_controller.v(264): truncated value with size 5 to match size of target (4)
+Warning (10230): Verilog HDL assignment warning at fast_controller.v(278): truncated value with size 5 to match size of target (4)
+Warning (10230): Verilog HDL assignment warning at fast_controller.v(279): truncated value with size 5 to match size of target (4)
+Warning (10230): Verilog HDL assignment warning at fast_controller.v(293): truncated value with size 5 to match size of target (4)
+Warning (10230): Verilog HDL assignment warning at fast_controller.v(294): truncated value with size 5 to match size of target (4)
+Warning (10230): Verilog HDL assignment warning at fast_controller.v(308): truncated value with size 5 to match size of target (4)
+Warning (10230): Verilog HDL assignment warning at fast_controller.v(309): truncated value with size 5 to match size of target (4)
+Warning (10230): Verilog HDL assignment warning at fast_controller.v(322): truncated value with size 5 to match size of target (4)
+Warning (10230): Verilog HDL assignment warning at fast_controller.v(323): truncated value with size 5 to match size of target (4)
+Warning (10230): Verilog HDL assignment warning at fast_controller.v(336): truncated value with size 5 to match size of target (4)
+Warning (10230): Verilog HDL assignment warning at fast_controller.v(337): truncated value with size 5 to match size of target (4)
+Warning (10230): Verilog HDL assignment warning at fast_controller.v(350): truncated value with size 5 to match size of target (4)
+Warning (10230): Verilog HDL assignment warning at fast_controller.v(351): truncated value with size 5 to match size of target (4)
+Warning (10230): Verilog HDL assignment warning at fast_controller.v(364): truncated value with size 5 to match size of target (4)
+Warning (10230): Verilog HDL assignment warning at fast_controller.v(365): truncated value with size 5 to match size of target (4)
+Info (12128): Elaborating entity "FD_AddrCal" for hierarchy "FD_AddrCal:AddrCal_FD"
+Warning (10230): Verilog HDL assignment warning at FD_AddrCal.v(11): truncated value with size 32 to match size of target (15)
+Info (12128): Elaborating entity "FD_Register" for hierarchy "FD_Register:Register_FD"
+Info (12128): Elaborating entity "FD_Datapath" for hierarchy "FD_Datapath:Datapath_FD"
+Warning (10230): Verilog HDL assignment warning at FD_Datapath.v(41): truncated value with size 9 to match size of target (8)
+Warning (10230): Verilog HDL assignment warning at FD_Datapath.v(42): truncated value with size 9 to match size of target (8)
+Warning (10230): Verilog HDL assignment warning at FD_Datapath.v(364): truncated value with size 32 to match size of target (1)
+Info (12128): Elaborating entity "CustomRAM" for hierarchy "CustomRAM:RAM_custom"
+Info (12128): Elaborating entity "altsyncram" for hierarchy "CustomRAM:RAM_custom|altsyncram:altsyncram_component"
+Info (12130): Elaborated megafunction instantiation "CustomRAM:RAM_custom|altsyncram:altsyncram_component"
+Info (12133): Instantiated megafunction "CustomRAM:RAM_custom|altsyncram:altsyncram_component" with the following parameter:
+    Info (12134): Parameter "address_aclr_b" = "NONE"
+    Info (12134): Parameter "address_reg_b" = "CLOCK0"
+    Info (12134): Parameter "clock_enable_input_a" = "BYPASS"
+    Info (12134): Parameter "clock_enable_input_b" = "BYPASS"
+    Info (12134): Parameter "clock_enable_output_b" = "BYPASS"
+    Info (12134): Parameter "intended_device_family" = "Cyclone IV E"
+    Info (12134): Parameter "lpm_type" = "altsyncram"
+    Info (12134): Parameter "numwords_a" = "65536"
+    Info (12134): Parameter "numwords_b" = "65536"
+    Info (12134): Parameter "operation_mode" = "DUAL_PORT"
+    Info (12134): Parameter "outdata_aclr_b" = "NONE"
+    Info (12134): Parameter "outdata_reg_b" = "CLOCK0"
+    Info (12134): Parameter "power_up_uninitialized" = "FALSE"
+    Info (12134): Parameter "read_during_write_mode_mixed_ports" = "DONT_CARE"
+    Info (12134): Parameter "widthad_a" = "16"
+    Info (12134): Parameter "widthad_b" = "16"
+    Info (12134): Parameter "width_a" = "16"
+    Info (12134): Parameter "width_b" = "16"
+    Info (12134): Parameter "width_byteena_a" = "1"
+Info (12021): Found 1 design units, including 1 entities, in source file db/altsyncram_isn1.tdf
+    Info (12023): Found entity 1: altsyncram_isn1
+Info (12128): Elaborating entity "altsyncram_isn1" for hierarchy "CustomRAM:RAM_custom|altsyncram:altsyncram_component|altsyncram_isn1:auto_generated"
+Info (12021): Found 1 design units, including 1 entities, in source file db/decode_k8a.tdf
+    Info (12023): Found entity 1: decode_k8a
+Info (12128): Elaborating entity "decode_k8a" for hierarchy "CustomRAM:RAM_custom|altsyncram:altsyncram_component|altsyncram_isn1:auto_generated|decode_k8a:rden_decode_b"
+Warning (12011): Net is missing source, defaulting to GND
+    Warning (12110): Net "FD_memAddr[15]" is missing source, defaulting to GND
+Warning (12011): Net is missing source, defaulting to GND
+    Warning (12110): Net "FD_memAddr[15]" is missing source, defaulting to GND
+Warning (12011): Net is missing source, defaulting to GND
+    Warning (12110): Net "FD_memAddr[15]" is missing source, defaulting to GND
+Warning (12011): Net is missing source, defaulting to GND
+    Warning (12110): Net "FD_memAddr[15]" is missing source, defaulting to GND
 Info (12021): Found 1 design units, including 1 entities, in source file db/altsyncram_0u14.tdf
     Info (12023): Found entity 1: altsyncram_0u14
 Info (12021): Found 1 design units, including 1 entities, in source file db/mux_vsc.tdf
@@ -1559,6 +1943,116 @@ Info (12021): Found 1 design units, including 1 entities, in source file db/cntr
 Info (12021): Found 1 design units, including 1 entities, in source file db/cmpr_ngc.tdf
     Info (12023): Found entity 1: cmpr_ngc
 Info (12033): Analysis and Synthesis generated SignalTap II or debug node instance "auto_signaltap_0"
+Warning (14284): Synthesized away the following node(s):
+    Warning (14285): Synthesized away the following RAM node(s):
+        Warning (14320): Synthesized away node "CustomRAM:RAM_custom|altsyncram:altsyncram_component|altsyncram_isn1:auto_generated|ram_block1a0"
+        Warning (14320): Synthesized away node "CustomRAM:RAM_custom|altsyncram:altsyncram_component|altsyncram_isn1:auto_generated|ram_block1a1"
+        Warning (14320): Synthesized away node "CustomRAM:RAM_custom|altsyncram:altsyncram_component|altsyncram_isn1:auto_generated|ram_block1a2"
+        Warning (14320): Synthesized away node "CustomRAM:RAM_custom|altsyncram:altsyncram_component|altsyncram_isn1:auto_generated|ram_block1a3"
+        Warning (14320): Synthesized away node "CustomRAM:RAM_custom|altsyncram:altsyncram_component|altsyncram_isn1:auto_generated|ram_block1a4"
+        Warning (14320): Synthesized away node "CustomRAM:RAM_custom|altsyncram:altsyncram_component|altsyncram_isn1:auto_generated|ram_block1a10"
+        Warning (14320): Synthesized away node "CustomRAM:RAM_custom|altsyncram:altsyncram_component|altsyncram_isn1:auto_generated|ram_block1a11"
+        Warning (14320): Synthesized away node "CustomRAM:RAM_custom|altsyncram:altsyncram_component|altsyncram_isn1:auto_generated|ram_block1a12"
+        Warning (14320): Synthesized away node "CustomRAM:RAM_custom|altsyncram:altsyncram_component|altsyncram_isn1:auto_generated|ram_block1a13"
+        Warning (14320): Synthesized away node "CustomRAM:RAM_custom|altsyncram:altsyncram_component|altsyncram_isn1:auto_generated|ram_block1a14"
+        Warning (14320): Synthesized away node "CustomRAM:RAM_custom|altsyncram:altsyncram_component|altsyncram_isn1:auto_generated|ram_block1a15"
+        Warning (14320): Synthesized away node "CustomRAM:RAM_custom|altsyncram:altsyncram_component|altsyncram_isn1:auto_generated|ram_block1a16"
+        Warning (14320): Synthesized away node "CustomRAM:RAM_custom|altsyncram:altsyncram_component|altsyncram_isn1:auto_generated|ram_block1a17"
+        Warning (14320): Synthesized away node "CustomRAM:RAM_custom|altsyncram:altsyncram_component|altsyncram_isn1:auto_generated|ram_block1a18"
+        Warning (14320): Synthesized away node "CustomRAM:RAM_custom|altsyncram:altsyncram_component|altsyncram_isn1:auto_generated|ram_block1a19"
+        Warning (14320): Synthesized away node "CustomRAM:RAM_custom|altsyncram:altsyncram_component|altsyncram_isn1:auto_generated|ram_block1a20"
+        Warning (14320): Synthesized away node "CustomRAM:RAM_custom|altsyncram:altsyncram_component|altsyncram_isn1:auto_generated|ram_block1a26"
+        Warning (14320): Synthesized away node "CustomRAM:RAM_custom|altsyncram:altsyncram_component|altsyncram_isn1:auto_generated|ram_block1a27"
+        Warning (14320): Synthesized away node "CustomRAM:RAM_custom|altsyncram:altsyncram_component|altsyncram_isn1:auto_generated|ram_block1a28"
+        Warning (14320): Synthesized away node "CustomRAM:RAM_custom|altsyncram:altsyncram_component|altsyncram_isn1:auto_generated|ram_block1a29"
+        Warning (14320): Synthesized away node "CustomRAM:RAM_custom|altsyncram:altsyncram_component|altsyncram_isn1:auto_generated|ram_block1a30"
+        Warning (14320): Synthesized away node "CustomRAM:RAM_custom|altsyncram:altsyncram_component|altsyncram_isn1:auto_generated|ram_block1a31"
+        Warning (14320): Synthesized away node "CustomRAM:RAM_custom|altsyncram:altsyncram_component|altsyncram_isn1:auto_generated|ram_block1a32"
+        Warning (14320): Synthesized away node "CustomRAM:RAM_custom|altsyncram:altsyncram_component|altsyncram_isn1:auto_generated|ram_block1a33"
+        Warning (14320): Synthesized away node "CustomRAM:RAM_custom|altsyncram:altsyncram_component|altsyncram_isn1:auto_generated|ram_block1a34"
+        Warning (14320): Synthesized away node "CustomRAM:RAM_custom|altsyncram:altsyncram_component|altsyncram_isn1:auto_generated|ram_block1a35"
+        Warning (14320): Synthesized away node "CustomRAM:RAM_custom|altsyncram:altsyncram_component|altsyncram_isn1:auto_generated|ram_block1a36"
+        Warning (14320): Synthesized away node "CustomRAM:RAM_custom|altsyncram:altsyncram_component|altsyncram_isn1:auto_generated|ram_block1a42"
+        Warning (14320): Synthesized away node "CustomRAM:RAM_custom|altsyncram:altsyncram_component|altsyncram_isn1:auto_generated|ram_block1a43"
+        Warning (14320): Synthesized away node "CustomRAM:RAM_custom|altsyncram:altsyncram_component|altsyncram_isn1:auto_generated|ram_block1a44"
+        Warning (14320): Synthesized away node "CustomRAM:RAM_custom|altsyncram:altsyncram_component|altsyncram_isn1:auto_generated|ram_block1a45"
+        Warning (14320): Synthesized away node "CustomRAM:RAM_custom|altsyncram:altsyncram_component|altsyncram_isn1:auto_generated|ram_block1a46"
+        Warning (14320): Synthesized away node "CustomRAM:RAM_custom|altsyncram:altsyncram_component|altsyncram_isn1:auto_generated|ram_block1a47"
+        Warning (14320): Synthesized away node "CustomRAM:RAM_custom|altsyncram:altsyncram_component|altsyncram_isn1:auto_generated|ram_block1a48"
+        Warning (14320): Synthesized away node "CustomRAM:RAM_custom|altsyncram:altsyncram_component|altsyncram_isn1:auto_generated|ram_block1a49"
+        Warning (14320): Synthesized away node "CustomRAM:RAM_custom|altsyncram:altsyncram_component|altsyncram_isn1:auto_generated|ram_block1a50"
+        Warning (14320): Synthesized away node "CustomRAM:RAM_custom|altsyncram:altsyncram_component|altsyncram_isn1:auto_generated|ram_block1a51"
+        Warning (14320): Synthesized away node "CustomRAM:RAM_custom|altsyncram:altsyncram_component|altsyncram_isn1:auto_generated|ram_block1a52"
+        Warning (14320): Synthesized away node "CustomRAM:RAM_custom|altsyncram:altsyncram_component|altsyncram_isn1:auto_generated|ram_block1a58"
+        Warning (14320): Synthesized away node "CustomRAM:RAM_custom|altsyncram:altsyncram_component|altsyncram_isn1:auto_generated|ram_block1a59"
+        Warning (14320): Synthesized away node "CustomRAM:RAM_custom|altsyncram:altsyncram_component|altsyncram_isn1:auto_generated|ram_block1a60"
+        Warning (14320): Synthesized away node "CustomRAM:RAM_custom|altsyncram:altsyncram_component|altsyncram_isn1:auto_generated|ram_block1a61"
+        Warning (14320): Synthesized away node "CustomRAM:RAM_custom|altsyncram:altsyncram_component|altsyncram_isn1:auto_generated|ram_block1a62"
+        Warning (14320): Synthesized away node "CustomRAM:RAM_custom|altsyncram:altsyncram_component|altsyncram_isn1:auto_generated|ram_block1a63"
+        Warning (14320): Synthesized away node "CustomRAM:RAM_custom|altsyncram:altsyncram_component|altsyncram_isn1:auto_generated|ram_block1a64"
+        Warning (14320): Synthesized away node "CustomRAM:RAM_custom|altsyncram:altsyncram_component|altsyncram_isn1:auto_generated|ram_block1a65"
+        Warning (14320): Synthesized away node "CustomRAM:RAM_custom|altsyncram:altsyncram_component|altsyncram_isn1:auto_generated|ram_block1a66"
+        Warning (14320): Synthesized away node "CustomRAM:RAM_custom|altsyncram:altsyncram_component|altsyncram_isn1:auto_generated|ram_block1a67"
+        Warning (14320): Synthesized away node "CustomRAM:RAM_custom|altsyncram:altsyncram_component|altsyncram_isn1:auto_generated|ram_block1a68"
+        Warning (14320): Synthesized away node "CustomRAM:RAM_custom|altsyncram:altsyncram_component|altsyncram_isn1:auto_generated|ram_block1a69"
+        Warning (14320): Synthesized away node "CustomRAM:RAM_custom|altsyncram:altsyncram_component|altsyncram_isn1:auto_generated|ram_block1a70"
+        Warning (14320): Synthesized away node "CustomRAM:RAM_custom|altsyncram:altsyncram_component|altsyncram_isn1:auto_generated|ram_block1a71"
+        Warning (14320): Synthesized away node "CustomRAM:RAM_custom|altsyncram:altsyncram_component|altsyncram_isn1:auto_generated|ram_block1a72"
+        Warning (14320): Synthesized away node "CustomRAM:RAM_custom|altsyncram:altsyncram_component|altsyncram_isn1:auto_generated|ram_block1a73"
+        Warning (14320): Synthesized away node "CustomRAM:RAM_custom|altsyncram:altsyncram_component|altsyncram_isn1:auto_generated|ram_block1a74"
+        Warning (14320): Synthesized away node "CustomRAM:RAM_custom|altsyncram:altsyncram_component|altsyncram_isn1:auto_generated|ram_block1a75"
+        Warning (14320): Synthesized away node "CustomRAM:RAM_custom|altsyncram:altsyncram_component|altsyncram_isn1:auto_generated|ram_block1a76"
+        Warning (14320): Synthesized away node "CustomRAM:RAM_custom|altsyncram:altsyncram_component|altsyncram_isn1:auto_generated|ram_block1a77"
+        Warning (14320): Synthesized away node "CustomRAM:RAM_custom|altsyncram:altsyncram_component|altsyncram_isn1:auto_generated|ram_block1a78"
+        Warning (14320): Synthesized away node "CustomRAM:RAM_custom|altsyncram:altsyncram_component|altsyncram_isn1:auto_generated|ram_block1a79"
+        Warning (14320): Synthesized away node "CustomRAM:RAM_custom|altsyncram:altsyncram_component|altsyncram_isn1:auto_generated|ram_block1a80"
+        Warning (14320): Synthesized away node "CustomRAM:RAM_custom|altsyncram:altsyncram_component|altsyncram_isn1:auto_generated|ram_block1a81"
+        Warning (14320): Synthesized away node "CustomRAM:RAM_custom|altsyncram:altsyncram_component|altsyncram_isn1:auto_generated|ram_block1a82"
+        Warning (14320): Synthesized away node "CustomRAM:RAM_custom|altsyncram:altsyncram_component|altsyncram_isn1:auto_generated|ram_block1a83"
+        Warning (14320): Synthesized away node "CustomRAM:RAM_custom|altsyncram:altsyncram_component|altsyncram_isn1:auto_generated|ram_block1a84"
+        Warning (14320): Synthesized away node "CustomRAM:RAM_custom|altsyncram:altsyncram_component|altsyncram_isn1:auto_generated|ram_block1a85"
+        Warning (14320): Synthesized away node "CustomRAM:RAM_custom|altsyncram:altsyncram_component|altsyncram_isn1:auto_generated|ram_block1a86"
+        Warning (14320): Synthesized away node "CustomRAM:RAM_custom|altsyncram:altsyncram_component|altsyncram_isn1:auto_generated|ram_block1a87"
+        Warning (14320): Synthesized away node "CustomRAM:RAM_custom|altsyncram:altsyncram_component|altsyncram_isn1:auto_generated|ram_block1a88"
+        Warning (14320): Synthesized away node "CustomRAM:RAM_custom|altsyncram:altsyncram_component|altsyncram_isn1:auto_generated|ram_block1a89"
+        Warning (14320): Synthesized away node "CustomRAM:RAM_custom|altsyncram:altsyncram_component|altsyncram_isn1:auto_generated|ram_block1a90"
+        Warning (14320): Synthesized away node "CustomRAM:RAM_custom|altsyncram:altsyncram_component|altsyncram_isn1:auto_generated|ram_block1a91"
+        Warning (14320): Synthesized away node "CustomRAM:RAM_custom|altsyncram:altsyncram_component|altsyncram_isn1:auto_generated|ram_block1a92"
+        Warning (14320): Synthesized away node "CustomRAM:RAM_custom|altsyncram:altsyncram_component|altsyncram_isn1:auto_generated|ram_block1a93"
+        Warning (14320): Synthesized away node "CustomRAM:RAM_custom|altsyncram:altsyncram_component|altsyncram_isn1:auto_generated|ram_block1a94"
+        Warning (14320): Synthesized away node "CustomRAM:RAM_custom|altsyncram:altsyncram_component|altsyncram_isn1:auto_generated|ram_block1a95"
+        Warning (14320): Synthesized away node "CustomRAM:RAM_custom|altsyncram:altsyncram_component|altsyncram_isn1:auto_generated|ram_block1a96"
+        Warning (14320): Synthesized away node "CustomRAM:RAM_custom|altsyncram:altsyncram_component|altsyncram_isn1:auto_generated|ram_block1a97"
+        Warning (14320): Synthesized away node "CustomRAM:RAM_custom|altsyncram:altsyncram_component|altsyncram_isn1:auto_generated|ram_block1a98"
+        Warning (14320): Synthesized away node "CustomRAM:RAM_custom|altsyncram:altsyncram_component|altsyncram_isn1:auto_generated|ram_block1a99"
+        Warning (14320): Synthesized away node "CustomRAM:RAM_custom|altsyncram:altsyncram_component|altsyncram_isn1:auto_generated|ram_block1a100"
+        Warning (14320): Synthesized away node "CustomRAM:RAM_custom|altsyncram:altsyncram_component|altsyncram_isn1:auto_generated|ram_block1a101"
+        Warning (14320): Synthesized away node "CustomRAM:RAM_custom|altsyncram:altsyncram_component|altsyncram_isn1:auto_generated|ram_block1a102"
+        Warning (14320): Synthesized away node "CustomRAM:RAM_custom|altsyncram:altsyncram_component|altsyncram_isn1:auto_generated|ram_block1a103"
+        Warning (14320): Synthesized away node "CustomRAM:RAM_custom|altsyncram:altsyncram_component|altsyncram_isn1:auto_generated|ram_block1a104"
+        Warning (14320): Synthesized away node "CustomRAM:RAM_custom|altsyncram:altsyncram_component|altsyncram_isn1:auto_generated|ram_block1a105"
+        Warning (14320): Synthesized away node "CustomRAM:RAM_custom|altsyncram:altsyncram_component|altsyncram_isn1:auto_generated|ram_block1a106"
+        Warning (14320): Synthesized away node "CustomRAM:RAM_custom|altsyncram:altsyncram_component|altsyncram_isn1:auto_generated|ram_block1a107"
+        Warning (14320): Synthesized away node "CustomRAM:RAM_custom|altsyncram:altsyncram_component|altsyncram_isn1:auto_generated|ram_block1a108"
+        Warning (14320): Synthesized away node "CustomRAM:RAM_custom|altsyncram:altsyncram_component|altsyncram_isn1:auto_generated|ram_block1a109"
+        Warning (14320): Synthesized away node "CustomRAM:RAM_custom|altsyncram:altsyncram_component|altsyncram_isn1:auto_generated|ram_block1a110"
+        Warning (14320): Synthesized away node "CustomRAM:RAM_custom|altsyncram:altsyncram_component|altsyncram_isn1:auto_generated|ram_block1a111"
+        Warning (14320): Synthesized away node "CustomRAM:RAM_custom|altsyncram:altsyncram_component|altsyncram_isn1:auto_generated|ram_block1a112"
+        Warning (14320): Synthesized away node "CustomRAM:RAM_custom|altsyncram:altsyncram_component|altsyncram_isn1:auto_generated|ram_block1a113"
+        Warning (14320): Synthesized away node "CustomRAM:RAM_custom|altsyncram:altsyncram_component|altsyncram_isn1:auto_generated|ram_block1a114"
+        Warning (14320): Synthesized away node "CustomRAM:RAM_custom|altsyncram:altsyncram_component|altsyncram_isn1:auto_generated|ram_block1a115"
+        Warning (14320): Synthesized away node "CustomRAM:RAM_custom|altsyncram:altsyncram_component|altsyncram_isn1:auto_generated|ram_block1a116"
+        Warning (14320): Synthesized away node "CustomRAM:RAM_custom|altsyncram:altsyncram_component|altsyncram_isn1:auto_generated|ram_block1a117"
+        Warning (14320): Synthesized away node "CustomRAM:RAM_custom|altsyncram:altsyncram_component|altsyncram_isn1:auto_generated|ram_block1a118"
+        Warning (14320): Synthesized away node "CustomRAM:RAM_custom|altsyncram:altsyncram_component|altsyncram_isn1:auto_generated|ram_block1a119"
+        Warning (14320): Synthesized away node "CustomRAM:RAM_custom|altsyncram:altsyncram_component|altsyncram_isn1:auto_generated|ram_block1a120"
+        Warning (14320): Synthesized away node "CustomRAM:RAM_custom|altsyncram:altsyncram_component|altsyncram_isn1:auto_generated|ram_block1a121"
+        Warning (14320): Synthesized away node "CustomRAM:RAM_custom|altsyncram:altsyncram_component|altsyncram_isn1:auto_generated|ram_block1a122"
+        Warning (14320): Synthesized away node "CustomRAM:RAM_custom|altsyncram:altsyncram_component|altsyncram_isn1:auto_generated|ram_block1a123"
+        Warning (14320): Synthesized away node "CustomRAM:RAM_custom|altsyncram:altsyncram_component|altsyncram_isn1:auto_generated|ram_block1a124"
+        Warning (14320): Synthesized away node "CustomRAM:RAM_custom|altsyncram:altsyncram_component|altsyncram_isn1:auto_generated|ram_block1a125"
+        Warning (14320): Synthesized away node "CustomRAM:RAM_custom|altsyncram:altsyncram_component|altsyncram_isn1:auto_generated|ram_block1a126"
+        Warning (14320): Synthesized away node "CustomRAM:RAM_custom|altsyncram:altsyncram_component|altsyncram_isn1:auto_generated|ram_block1a127"
 Warning (13046): Tri-state node(s) do not directly drive top-level pin(s)
     Warning (13049): Converted tri-state buffer "vmem_data[8]" feeding internal logic into a wire
     Warning (13049): Converted tri-state buffer "vmem_data[7]" feeding internal logic into a wire
@@ -1576,13 +2070,30 @@ Warning (13046): Tri-state node(s) do not directly drive top-level pin(s)
     Warning (13049): Converted tri-state buffer "vmem_data[3]" feeding internal logic into a wire
     Warning (13049): Converted tri-state buffer "vmem_data[4]" feeding internal logic into a wire
     Warning (13049): Converted tri-state buffer "vmem_data[5]" feeding internal logic into a wire
-Info (278001): Inferred 6 megafunctions from design logic
+Info (278001): Inferred 7 megafunctions from design logic
+    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "Div0"
     Info (278003): Inferred multiplier megafunction ("lpm_mult") from the following logic: "Mult5"
     Info (278003): Inferred multiplier megafunction ("lpm_mult") from the following logic: "Mult0"
     Info (278003): Inferred multiplier megafunction ("lpm_mult") from the following logic: "Mult9"
     Info (278003): Inferred multiplier megafunction ("lpm_mult") from the following logic: "Mult6"
     Info (278003): Inferred multiplier megafunction ("lpm_mult") from the following logic: "Mult8"
     Info (278003): Inferred multiplier megafunction ("lpm_mult") from the following logic: "Mult7"
+Info (12130): Elaborated megafunction instantiation "lpm_divide:Div0"
+Info (12133): Instantiated megafunction "lpm_divide:Div0" with the following parameter:
+    Info (12134): Parameter "LPM_WIDTHN" = "16"
+    Info (12134): Parameter "LPM_WIDTHD" = "8"
+    Info (12134): Parameter "LPM_NREPRESENTATION" = "UNSIGNED"
+    Info (12134): Parameter "LPM_DREPRESENTATION" = "UNSIGNED"
+Info (12021): Found 1 design units, including 1 entities, in source file db/lpm_divide_6jm.tdf
+    Info (12023): Found entity 1: lpm_divide_6jm
+Info (12021): Found 1 design units, including 1 entities, in source file db/sign_div_unsign_ulh.tdf
+    Info (12023): Found entity 1: sign_div_unsign_ulh
+Info (12021): Found 1 design units, including 1 entities, in source file db/alt_u_div_g7f.tdf
+    Info (12023): Found entity 1: alt_u_div_g7f
+Info (12021): Found 1 design units, including 1 entities, in source file db/add_sub_7pc.tdf
+    Info (12023): Found entity 1: add_sub_7pc
+Info (12021): Found 1 design units, including 1 entities, in source file db/add_sub_8pc.tdf
+    Info (12023): Found entity 1: add_sub_8pc
 Info (12130): Elaborated megafunction instantiation "lpm_mult:Mult5"
 Info (12133): Instantiated megafunction "lpm_mult:Mult5" with the following parameter:
     Info (12134): Parameter "LPM_WIDTHA" = "9"
@@ -1646,14 +2157,20 @@ Info (12133): Instantiated megafunction "lpm_mult:Mult7" with the following para
     Info (12134): Parameter "MAXIMIZE_SPEED" = "5"
 Info (12021): Found 1 design units, including 1 entities, in source file db/mult_dft.tdf
     Info (12023): Found entity 1: mult_dft
+Warning (12241): 2 hierarchies have connectivity warnings - see the Connectivity Checks report folder
 Info (13014): Ignored 42 buffer(s)
     Info (13019): Ignored 42 SOFT buffer(s)
 Info (13000): Registers with preset signals will power-up high
 Info (13003): DEV_CLRn pin will set, and not reset, register with preset signal due to NOT Gate Push-Back
 Info (286031): Timing-Driven Synthesis is running on partition "Top"
-Info (17049): 1 registers lost all their fanouts during netlist optimizations.
+Info (17049): 5 registers lost all their fanouts during netlist optimizations.
+Info (13000): Registers with preset signals will power-up high
+Info (13003): DEV_CLRn pin will set, and not reset, register with preset signal due to NOT Gate Push-Back
+Warning (13024): Output pins are stuck at VCC or GND
+    Warning (13410): Pin "sld_hub:auto_hub|receive[0][0]" is stuck at GND
+Info (286031): Timing-Driven Synthesis is running on partition "sld_hub:auto_hub"
 Info (144001): Generated suppressed messages file D:/Git workspace/brainboard-fpga/output_files/SoC_Brain.map.smsg
-Info (35024): Succesfully connected in-system debug instance "auto_signaltap_0" to all 7 required data inputs, trigger inputs, acquisition clocks, and dynamic pins
+Critical Warning (35025): Partially connected in-system debug instance "auto_signaltap_0" to 5 of its 7 required data inputs, trigger inputs, acquisition clocks, and dynamic pins.  There were 0 illegal, 0 inaccessible, and 2 missing sources or connections.
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 1 node(s), including 0 DDIO, 1 PLL, 0 transceiver and 0 LCELL
 Warning (21074): Design contains 8 input pin(s) that do not drive logic
@@ -1665,19 +2182,19 @@ Warning (21074): Design contains 8 input pin(s) that do not drive logic
     Warning (15610): No output dependent on input pin "vpo[5]"
     Warning (15610): No output dependent on input pin "vpo[6]"
     Warning (15610): No output dependent on input pin "vpo[7]"
-Info (21057): Implemented 1323 device resources after synthesis - the final resource count might be different
+Info (21057): Implemented 2279 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 43 input pins
     Info (21059): Implemented 5 output pins
     Info (21060): Implemented 16 bidirectional pins
-    Info (21061): Implemented 1107 logic cells
-    Info (21064): Implemented 131 RAM segments
+    Info (21061): Implemented 2043 logic cells
+    Info (21064): Implemented 151 RAM segments
     Info (21065): Implemented 1 PLLs
     Info (21062): Implemented 19 DSP elements
-Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 39 warnings
-    Info: Peak virtual memory: 562 megabytes
-    Info: Processing ended: Mon Jul 10 20:49:57 2017
-    Info: Elapsed time: 00:00:13
-    Info: Total CPU time (on all processors): 00:00:13
+Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 205 warnings
+    Info: Peak virtual memory: 575 megabytes
+    Info: Processing ended: Mon Jul 10 21:07:45 2017
+    Info: Elapsed time: 00:00:22
+    Info: Total CPU time (on all processors): 00:00:22
 
 
 +------------------------------------------+
