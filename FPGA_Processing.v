@@ -183,7 +183,7 @@ wire [4:0]	Gray_R = GrayScale;
 wire [5:0]	Gray_G = {GrayScale,1'b0};
 wire [4:0]	Gray_B = GrayScale;
 wire [15:0]	DecVData = {Gray_R,Gray_G,Gray_B};
-//wire [15:0] DecVData = {R,G,B};
+wire [15:0] OriginVData = {R,G,B};
 /////////////////////////////////////////////////////////////////////////////
 
 
@@ -233,11 +233,20 @@ wire   vd_wrx    = ~(~vpo_wrxd1 & vpo_wrxd3);
 //------------------------------------------------------
 
 reg [15:0] vdata;
+reg [15:0] ovdata;
 reg [15:0] vadr;
 reg A_addr;
 always @(negedge resetx or posedge clk_llc8)
-   if      (~resetx)           vdata <= 16'b0;
-	else if (href2_wr)          vdata <= DecVData;
+   if      (~resetx)           
+		begin
+			vdata <= 16'b0;
+			ovdata <= 16'b0;
+		end
+	else if (href2_wr)
+		begin
+			vdata <= DecVData;
+			ovdata <= OriginVData;
+		end
 
 always @(negedge resetx or posedge clk_llc8)
    if      (~resetx)           vadr[14:0] <= 15'b0;
@@ -284,6 +293,7 @@ assign AMAmem_irq1 = ~oddframe_d1 & oddframe_d3 & (vadr[15] == 0);
 
 wire	[15:0]  vmem_addr;
 wire	[15:0]  vmem_data;
+wire	[15:0]  ovmem_data;
 wire	        vmem_rden;
 wire	        vmem_wren;
 wire  [15:0]  vmem_q;
@@ -300,7 +310,7 @@ pll	pll_inst (
 RAM	RAM_inst (
 	.address ( vmem_addr ),
 	.clock ( Sys_clk ),
-	.data ( vmem_data ),
+	.data ( ovmem_data ),
 	.rden ( vmem_rden ),
 	.wren ( vmem_wren ),
 	.q ( vmem_q )
@@ -379,9 +389,10 @@ wire	[15:0]	row;
 
 assign row = (vmem_addr  / 16'b0000000010110100);
 
-assign AMAmem_data  = ( ~AMAmem_csx ) ? ((row > 4) ? (FD_isCorner ? 16'b0000011111100000 : (NMS_isCorner ? 16'b1111100000000000 : vmem_q)) : vmem_q) : 16'bZ;
+assign AMAmem_data  = ( ~AMAmem_csx ) ? ((row > 4) ? ((NMS_isCorner) ? ({vmem_q[15:11],vmem_q[10:6],1'b1,vmem_q[4:0]}) : ({vmem_q[15:11],vmem_q[10:6],1'b0,vmem_q[4:0]})) : ({vmem_q[15:11],vmem_q[10:6],1'b0,vmem_q[4:0]})) : 16'bZ;
 
 assign vmem_data    = ( mcs1 | mcs2 ) ? vdata : 16'bZ ;
+assign ovmem_data    = ( mcs1 | mcs2 ) ? ovdata : 16'bZ ;
 //assign vmem_data    = ( (~mcs0 & mcs1) | (~mcs0 & mcs2) ) ? vdata : 16'bZ ;
 
 assign vmem_addr     = ( mcs1 | mcs2 ) ? vadr : {A_addr, AMAmem_adr};	// 16bit SRAM address
